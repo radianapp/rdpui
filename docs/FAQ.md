@@ -35,3 +35,21 @@ RDP.setTheme('auto');
 
 ### Q4: Apakah RDP-UI mendukung integrasi dengan HTMX?
 **A:** Ya, sangat mendukung! Contohnya, indikator loading spinner telah terintegrasi dengan kelas `.rdp-htmx-indicator` yang secara otomatis muncul ketika HTMX melakukan request AJAX (menggunakan `hx-indicator`). Modal native RDP juga dapat di-render langsung dari server dan dimasukkan ke DOM menggunakan HTMX swap.
+
+---
+
+### Q5: Mengapa berkas contoh layout (`/examples/layouts-*.html`) tidak dapat dibuka setelah di-deploy di GitHub Pages?
+**A:** Pada konfigurasi awal, Vite hanya memproses `index.html` dan CSS tema sebagai input build. Akibatnya, berkas HTML di dalam folder `examples/` tidak ikut di-generate ke folder `dist/` dan tidak di-deploy ke GitHub Pages. Masalah ini diselesaikan dengan menambahkan halaman-halaman tersebut ke dalam konfigurasi `rollupOptions.input` di `vite.config.js` agar diproses oleh Vite secara otomatis:
+```javascript
+rollupOptions: {
+  input: {
+    rdp: resolve(__dirname, 'index.html'),
+    'examples/layouts-blank': resolve(__dirname, 'examples/layouts-blank.html'),
+    'examples/layouts-homepage': resolve(__dirname, 'examples/layouts-homepage.html'),
+    'examples/layouts-dashboard': resolve(__dirname, 'examples/layouts-dashboard.html'),
+    // ...
+  }
+}
+```
+Vite kemudian akan memproses dan menyalin berkas-berkas tersebut ke `dist/examples/` beserta penyesuaian path asetnya secara otomatis.
+

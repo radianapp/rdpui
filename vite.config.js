@@ -29,6 +29,9 @@ export default defineConfig({
     rollupOptions: {
       input: {
         rdp: resolve(__dirname, 'index.html'),
+        'examples/layouts-blank': resolve(__dirname, 'examples/layouts-blank.html'),
+        'examples/layouts-homepage': resolve(__dirname, 'examples/layouts-homepage.html'),
+        'examples/layouts-dashboard': resolve(__dirname, 'examples/layouts-dashboard.html'),
         'themes/green': resolve(__dirname, 'src/themes/colors/green.css'),
         'themes/amber': resolve(__dirname, 'src/themes/colors/amber.css'),
       },
