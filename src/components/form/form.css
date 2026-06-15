@@ -1,0 +1,296 @@
+/*
+ * ============================================================
+ *  RDP Form Enhancements — v1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Enhancement di atas form PicoCSS default.
+ *  PicoCSS sudah meng-handle styling form dasar, file ini
+ *  menambah fitur seperti form groups, input with icon,
+ *  floating labels, dan validation state.
+ *
+ *  Markup:
+ *    <div class="rdp-form-group">
+ *      <label class="rdp-form-label">Email</label>
+ *      <input type="email" class="rdp-input">
+ *      <small class="rdp-form-hint">Masukkan email aktif</small>
+ *    </div>
+ * ============================================================
+ */
+
+
+/* ── FORM GROUP ──────────────────────────────────────────── */
+
+.rdp-form-group {
+  margin-bottom: var(--rdp-space-md);
+}
+
+.rdp-form-group:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ── FORM LABEL ──────────────────────────────────────────── */
+
+.rdp-form-label {
+  display: block;
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-small);
+  font-weight: 600;
+  color: var(--rdp-text);
+  margin-bottom: var(--rdp-space-2xs);
+}
+
+.rdp-form-label--required::after {
+  content: " *";
+  color: var(--rdp-danger);
+}
+
+
+/* ── FORM HINT / HELPER TEXT ─────────────────────────────── */
+
+.rdp-form-hint {
+  display: block;
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-caption);
+  color: var(--rdp-text-muted);
+  margin-top: var(--rdp-space-2xs);
+}
+
+
+/* ── VALIDATION STATES ───────────────────────────────────── */
+
+.rdp-form-group--error .rdp-form-label {
+  color: var(--rdp-danger);
+}
+
+.rdp-form-group--error input,
+.rdp-form-group--error select,
+.rdp-form-group--error textarea {
+  border-color: var(--rdp-danger) !important;
+}
+
+.rdp-form-group--error .rdp-form-hint {
+  color: var(--rdp-danger);
+}
+
+.rdp-form-group--success input,
+.rdp-form-group--success select,
+.rdp-form-group--success textarea {
+  border-color: var(--rdp-success) !important;
+}
+
+.rdp-form-group--success .rdp-form-hint {
+  color: var(--rdp-success);
+}
+
+
+/* ── INPUT WITH ICON ─────────────────────────────────────── */
+
+.rdp-input-group {
+  position: relative;
+}
+
+.rdp-input-group input {
+  padding-left: 2.5rem;
+}
+
+.rdp-input-group__icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--rdp-text-muted);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rdp-input-group__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Suffix icon (right side) */
+.rdp-input-group--suffix input {
+  padding-left: var(--rdp-space-sm);
+  padding-right: 2.5rem;
+}
+
+.rdp-input-group--suffix .rdp-input-group__icon {
+  left: auto;
+  right: 0.75rem;
+}
+
+
+/* ── INPUT SIZES ─────────────────────────────────────────── */
+
+.rdp-input--sm {
+  padding: 0.375rem 0.625rem;
+  font-size: var(--rdp-size-caption);
+}
+
+.rdp-input--lg {
+  padding: 0.75rem 1rem;
+  font-size: var(--rdp-size-body);
+}
+
+
+/* ── TEXTAREA ────────────────────────────────────────────── */
+
+.rdp-textarea {
+  resize: vertical;
+  min-height: 6rem;
+}
+
+.rdp-textarea--no-resize {
+  resize: none;
+}
+
+
+/* ── CHECKBOX & RADIO GROUP ──────────────────────────────── */
+
+.rdp-check-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rdp-space-sm);
+}
+
+.rdp-check-group--inline {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--rdp-space-md);
+}
+
+.rdp-check-group label {
+  display: flex;
+  align-items: center;
+  gap: var(--rdp-space-xs);
+  font-size: var(--rdp-size-small);
+  cursor: pointer;
+  margin-bottom: 0;
+}
+
+
+/* ── SELECT WRAPPER ──────────────────────────────────────── */
+
+.rdp-select-wrapper {
+  position: relative;
+}
+
+.rdp-select-wrapper select {
+  appearance: none;
+  padding-right: 2.5rem;
+}
+
+.rdp-select-wrapper::after {
+  content: "";
+  position: absolute;
+  right: 0.875rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--rdp-text-muted);
+  pointer-events: none;
+}
+
+
+/* ── FORM LAYOUT ─────────────────────────────────────────── */
+
+.rdp-form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--rdp-space-md);
+}
+
+@media (min-width: 768px) {
+  .rdp-form-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rdp-form-row--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Horizontal form (label + input side by side) */
+@media (min-width: 768px) {
+  .rdp-form-horizontal .rdp-form-group {
+    display: grid;
+    grid-template-columns: minmax(120px, 200px) 1fr;
+    align-items: start;
+    gap: var(--rdp-space-md);
+  }
+
+  .rdp-form-horizontal .rdp-form-label {
+    padding-top: 0.5rem;
+    text-align: right;
+    margin-bottom: 0;
+  }
+}
+
+
+/* ── FORM ACTIONS (submit area) ──────────────────────────── */
+
+.rdp-form-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--rdp-space-sm);
+  padding-top: var(--rdp-space-md);
+  border-top: 1px solid var(--rdp-border-light);
+  margin-top: var(--rdp-space-lg);
+}
+
+.rdp-form-actions--right {
+  justify-content: flex-end;
+}
+
+.rdp-form-actions--between {
+  justify-content: space-between;
+}
+
+
+/* ── FILE INPUT ──────────────────────────────────────────── */
+
+.rdp-file-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--rdp-space-xl);
+  border: 2px dashed var(--rdp-border);
+  border-radius: var(--rdp-radius-lg);
+  background-color: var(--rdp-bg-secondary);
+  cursor: pointer;
+  transition: border-color var(--rdp-transition), background-color var(--rdp-transition);
+  text-align: center;
+}
+
+.rdp-file-input:hover {
+  border-color: var(--rdp-primary);
+  background-color: var(--rdp-primary-50);
+}
+
+.rdp-file-input input[type="file"] {
+  display: none;
+}
+
+.rdp-file-input__icon {
+  font-size: 2rem;
+  margin-bottom: var(--rdp-space-sm);
+  color: var(--rdp-text-muted);
+}
+
+.rdp-file-input__text {
+  font-size: var(--rdp-size-small);
+  color: var(--rdp-text-secondary);
+}
+
+.rdp-file-input__text strong {
+  color: var(--rdp-primary);
+}

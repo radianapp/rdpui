@@ -1,0 +1,278 @@
+/*
+ * ============================================================
+ *  RDP Design Tokens — v1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Seluruh design token untuk RDP-UI Design System.
+ *  Token ini menjadi single source of truth untuk warna,
+ *  spacing, radius, shadow, z-index, dan transition.
+ *
+ *  Cara pakai:
+ *    color: var(--rdp-primary-600);
+ *    padding: var(--rdp-space-md);
+ *    border-radius: var(--rdp-radius-md);
+ * ============================================================
+ */
+
+:root {
+
+   /* ── BRAND COLORS ──────────────────────────────────────────
+     Primary   : Navy (#0C2340) — Identitas utama RDP
+     Secondary : Gold (#B87D2E) — Aksen premium, CTA
+     Accent    : Teal (#0F6E56) — Sukses, positif, growth
+     ────────────────────────────────────────────────────────── */
+
+   /* Primary — Navy */
+   --rdp-primary-50: #E8EDF3;
+   --rdp-primary-100: #C5D0E0;
+   --rdp-primary-200: #9EB2CC;
+   --rdp-primary-300: #7793B7;
+   --rdp-primary-400: #597DA7;
+   --rdp-primary-500: #3B6797;
+   --rdp-primary-600: #335F8F;
+   --rdp-primary-700: #295484;
+   --rdp-primary-800: #1F4A7A;
+   --rdp-primary-900: #091A30;
+   --rdp-primary: var(--rdp-primary-900);
+
+   /* Secondary — Gold */
+   --rdp-secondary-50: #FBF5EB;
+   --rdp-secondary-100: #F4E4CD;
+   --rdp-secondary-200: #EDD2AB;
+   --rdp-secondary-300: #E5BF89;
+   --rdp-secondary-400: #DFB170;
+   --rdp-secondary-500: #D9A257;
+   --rdp-secondary-600: #D59A4F;
+   --rdp-secondary-700: #CF9046;
+   --rdp-secondary-800: #CA863C;
+   --rdp-secondary-900: #B87D2E;
+   --rdp-secondary: var(--rdp-secondary-900);
+
+   /* Accent — Teal */
+   --rdp-accent-50: #E2F1ED;
+   --rdp-accent-100: #B7DCD2;
+   --rdp-accent-200: #87C5B5;
+   --rdp-accent-300: #57AE97;
+   --rdp-accent-400: #339D81;
+   --rdp-accent-500: #0F8C6B;
+   --rdp-accent-600: #0D8463;
+   --rdp-accent-700: #0B7958;
+   --rdp-accent-800: #086F4E;
+   --rdp-accent-900: #0F6E56;
+   --rdp-accent: var(--rdp-accent-900);
+
+   /* Extra Brand Colors (Amber, Purple, Coral) */
+   --rdp-amber-50: #FFF8E1;
+   --rdp-amber-100: #FFECB3;
+   --rdp-amber-300: #FFD54F;
+   --rdp-amber-500: #FFC107;
+   --rdp-amber-700: #FFA000;
+   --rdp-amber-900: #FF6F00;
+   --rdp-amber: var(--rdp-amber-500);
+
+   --rdp-purple-50: #F3E5F5;
+   --rdp-purple-100: #E1BEE7;
+   --rdp-purple-300: #BA68C8;
+   --rdp-purple-500: #9C27B0;
+   --rdp-purple-700: #7B1FA2;
+   --rdp-purple-900: #4A148C;
+   --rdp-purple: var(--rdp-purple-500);
+
+   --rdp-coral-50: #FDF2F0;
+   --rdp-coral-100: #F8D7DA;
+   --rdp-coral-300: #E0877C;
+   --rdp-coral-500: #E05A47;
+   --rdp-coral-700: #C43D2D;
+   --rdp-coral-900: #B32E1B;
+   --rdp-coral: var(--rdp-coral-500);
+
+
+   /* ── SEMANTIC COLORS ───────────────────────────────────────
+     Digunakan untuk feedback & status.
+     ────────────────────────────────────────────────────────── */
+
+   --rdp-success-50: #E8F5E9;
+   --rdp-success-100: #C8E6C9;
+   --rdp-success-200: #A5D6A7;
+   --rdp-success-300: #81C784;
+   --rdp-success-400: #66BB6A;
+   --rdp-success-500: #4CAF50;
+   --rdp-success-600: #43A047;
+   --rdp-success-700: #388E3C;
+   --rdp-success-800: #2E7D32;
+   --rdp-success-900: #1B5E20;
+   --rdp-success: var(--rdp-success-600);
+
+   --rdp-warning-50: #FFF8E1;
+   --rdp-warning-100: #FFECB3;
+   --rdp-warning-200: #FFE082;
+   --rdp-warning-300: #FFD54F;
+   --rdp-warning-400: #FFCA28;
+   --rdp-warning-500: #FFC107;
+   --rdp-warning-600: #FFB300;
+   --rdp-warning-700: #FFA000;
+   --rdp-warning-800: #FF8F00;
+   --rdp-warning-900: #FF6F00;
+   --rdp-warning: var(--rdp-warning-600);
+
+   --rdp-danger-50: #FFEBEE;
+   --rdp-danger-100: #FFCDD2;
+   --rdp-danger-200: #EF9A9A;
+   --rdp-danger-300: #E57373;
+   --rdp-danger-400: #EF5350;
+   --rdp-danger-500: #F44336;
+   --rdp-danger-600: #E53935;
+   --rdp-danger-700: #D32F2F;
+   --rdp-danger-800: #C62828;
+   --rdp-danger-900: #B71C1C;
+   --rdp-danger: var(--rdp-danger-600);
+
+   --rdp-info-50: #E3F2FD;
+   --rdp-info-100: #BBDEFB;
+   --rdp-info-200: #90CAF9;
+   --rdp-info-300: #64B5F6;
+   --rdp-info-400: #42A5F5;
+   --rdp-info-500: #2196F3;
+   --rdp-info-600: #1E88E5;
+   --rdp-info-700: #1976D2;
+   --rdp-info-800: #1565C0;
+   --rdp-info-900: #0D47A1;
+   --rdp-info: var(--rdp-info-600);
+
+
+   /* ── SURFACE & TEXT (Light defaults) ───────────────────────
+     Override di themes/dark.css untuk dark mode.
+     ────────────────────────────────────────────────────────── */
+
+   --rdp-bg: #FFFFFF;
+   --rdp-bg-secondary: #F8F9FA;
+   --rdp-bg-tertiary: #F1F3F5;
+   --rdp-surface: #FFFFFF;
+   --rdp-surface-raised: #FFFFFF;
+   --rdp-surface-overlay: #FFFFFF;
+   --rdp-border: #DEE2E6;
+   --rdp-border-light: #E9ECEF;
+   --rdp-border-strong: #ADB5BD;
+
+   --rdp-text: #212529;
+   --rdp-text-secondary: #495057;
+   --rdp-text-muted: #868E96;
+   --rdp-text-inverse: #FFFFFF;
+   --rdp-text-link: var(--rdp-primary-700);
+   --rdp-text-link-hover: var(--rdp-primary-500);
+
+   /* Brand surface — cream background khas RDP */
+   --rdp-cream: #EFECE6;
+   --rdp-cream-dark: #E4DFD5;
+
+
+   /* ── SPACING SCALE ─────────────────────────────────────────
+     Base unit: 4px. Digunakan konsisten di seluruh komponen.
+     ────────────────────────────────────────────────────────── */
+
+   --rdp-space-3xs: 0.125rem;
+   /*  2px */
+   --rdp-space-2xs: 0.25rem;
+   /*  4px */
+   --rdp-space-xs: 0.25rem;
+   /*  4px */
+   --rdp-space-sm: 0.5rem;
+   /*  8px */
+   --rdp-space-md: 1rem;
+   /* 16px */
+   --rdp-space-lg: 1.5rem;
+   /* 24px */
+   --rdp-space-xl: 2rem;
+   /* 32px */
+   --rdp-space-2xl: 3rem;
+   /* 48px */
+   --rdp-space-3xl: 4rem;
+   /* 64px */
+   --rdp-space-4xl: 6rem;
+   /* 96px */
+
+
+   /* ── RADIUS SCALE ──────────────────────────────────────────
+     Konsisten untuk button, card, input, dll.
+     ────────────────────────────────────────────────────────── */
+
+   --rdp-radius-xs: 0.125rem;
+   /*  2px */
+   --rdp-radius-sm: 0.25rem;
+   /*  4px */
+   --rdp-radius-md: 0.5rem;
+   /*  8px */
+   --rdp-radius-lg: 0.75rem;
+   /* 12px */
+   --rdp-radius-xl: 1rem;
+   /* 16px */
+   --rdp-radius-2xl: 1.5rem;
+   /* 24px */
+   --rdp-radius-pill: 9999px;
+   --rdp-radius-circle: 50%;
+
+
+   /* ── SHADOW SCALE ──────────────────────────────────────────
+     Elevasi: xs (flat) → modal (tertinggi).
+     ────────────────────────────────────────────────────────── */
+
+   --rdp-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+   --rdp-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+   --rdp-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+   --rdp-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+   --rdp-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+   --rdp-shadow-floating: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+   --rdp-shadow-modal: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+   --rdp-shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+
+
+   /* ── Z-INDEX SCALE ─────────────────────────────────────────
+     Layer management yang konsisten.
+     ────────────────────────────────────────────────────────── */
+
+   --rdp-z-dropdown: 1000;
+   --rdp-z-sticky: 1020;
+   --rdp-z-fixed: 1030;
+   --rdp-z-backdrop: 1040;
+   --rdp-z-modal: 1050;
+   --rdp-z-popover: 1060;
+   --rdp-z-tooltip: 1070;
+   --rdp-z-toast: 1080;
+
+
+   /* ── TRANSITION ────────────────────────────────────────────
+     Standar timing untuk animasi dan transisi.
+     ────────────────────────────────────────────────────────── */
+
+   --rdp-duration-fast: 100ms;
+   --rdp-duration-normal: 200ms;
+   --rdp-duration-slow: 300ms;
+   --rdp-duration-slower: 500ms;
+   --rdp-easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+   --rdp-easing-in: cubic-bezier(0.4, 0, 1, 1);
+   --rdp-easing-out: cubic-bezier(0, 0, 0.2, 1);
+   --rdp-easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+   --rdp-transition: var(--rdp-duration-normal) var(--rdp-easing-default);
+
+
+   /* ── BREAKPOINTS (reference only — use in media queries) ──
+     Mobile First: min-width ascending.
+     ────────────────────────────────────────────────────────── */
+
+   /* --rdp-bp-sm:  576px;  — Small phones landscape       */
+   /* --rdp-bp-md:  768px;  — Tablets                      */
+   /* --rdp-bp-lg:  1024px; — Desktop                      */
+   /* --rdp-bp-xl:  1280px; — Large desktop                */
+   /* --rdp-bp-2xl: 1920px; — Ultra-wide / 4K              */
+
+
+   /* ── CONTENT WIDTH ─────────────────────────────────────────
+     Max-width untuk container dan section.
+     ────────────────────────────────────────────────────────── */
+
+   --rdp-container-sm: 640px;
+   --rdp-container-md: 768px;
+   --rdp-container-lg: 1024px;
+   --rdp-container-xl: 1280px;
+   --rdp-container-max: 1440px;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Organic AI Loader</title>
+<link rel="stylesheet" href="spinner.css">
+</head>
+<body>
+
+<h2>Taliti Processing Loader</h2>
+
+<div class="controls">
+    <button onclick="startLoader()">Start</button>
+    <button onclick="pauseLoader()">Pause</button>
+    <button onclick="stopLoader()">Stop</button>
+</div>
+
+<div class="task-card" id="loader">
+
+    <div class="ai-loader ai-loader--xl">
+        <div class="core"></div>
+        <span class="ray ray-1"></span>
+        <span class="ray ray-2"></span>
+        <span class="ray ray-3"></span>
+        <span class="ray ray-4"></span>
+        <span class="ray ray-5"></span>
+        <span class="ray ray-6"></span>
+        <span class="ray ray-7"></span>
+        <span class="ray ray-8"></span>
+        <span class="particle p1"></span>
+        <span class="particle p2"></span>
+        <span class="particle p3"></span>
+        <span class="particle p4"></span>
+        <span class="particle p5"></span>
+        <span class="particle p6"></span>
+        <span class="particle p7"></span>
+        <span class="particle p8"></span>
+    </div>
+
+    
+
+    <div class="status">
+        <strong>Mengambil data marketplace...</strong>
+        <p id="statusText">Running</p>
+    </div>
+
+</div>
+
+<script>
+
+const loader = document.getElementById("loader");
+const statusText = document.getElementById("statusText");
+
+function startLoader() {
+    loader.style.display = "flex";
+    loader.classList.remove("paused");
+    statusText.innerText = "Running";
+}
+
+function pauseLoader() {
+    loader.classList.add("paused");
+    statusText.innerText = "Paused";
+}
+
+function stopLoader() {
+    loader.style.display = "none";
+    statusText.innerText = "Stopped";
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+{# ══════════════════════════════════════════════════════════════
+   RDP Spinner Template Partial
+   File   : templates/rdp/spinner.html
+   Deps   : rdp-spinner.css
+
+   PENGGUNAAN:
+     {% include "rdp/spinner.html" %}
+
+   DENGAN PARAMETER (opsional — semua ada default-nya):
+     {% include "rdp/spinner.html" with
+         size="lg"        {# sm | md | lg | xl | 2xl — default: md #}
+         color="coral"    {# coral|teal|purple|amber|gray|white — default: coral #}
+         hidden=True      {# True → mulai tersembunyi — default: False #}
+         htmx=True        {# True → pakai rdp-htmx-indicator — default: False #}
+         htmx_inline=True {# True → inline dalam tombol — default: False #}
+         id="mySpinner"   {# id HTML opsional #}
+     %}
+
+   CONTOH PALING SEDERHANA:
+     {% include "rdp/spinner.html" with size="lg" color="teal" %}
+
+   CONTOH HTMX INDICATOR (zero JS):
+     {% include "rdp/spinner.html" with htmx=True id="formSpinner" %}
+     <button hx-post="/api/simpan/" hx-indicator="#formSpinner">Simpan</button>
+
+   CONTOH DALAM TOMBOL (inline):
+     <button hx-post="/api/kirim/" hx-indicator="#kirimSpinner">
+       {% include "rdp/spinner.html" with htmx_inline=True id="kirimSpinner" color="white" %}
+       Kirim
+     </button>
+   ══════════════════════════════════════════════════════════════ #}
+
+{% with
+  _size=size|default:"md"
+  _color=color|default:"coral"
+  _hidden=hidden|default:False
+  _htmx=htmx|default:False
+  _htmx_inline=htmx_inline|default:False
+%}
+<div
+  {% if id %}id="{{ id }}"{% endif %}
+  class="rdp-spinner rdp-spinner--{{ _size }} rdp-spinner--{{ _color }}{% if _hidden %} rdp-spinner--hidden{% endif %}{% if _htmx %} rdp-htmx-indicator{% endif %}{% if _htmx_inline %} rdp-htmx-indicator--inline rdp-spinner--inline{% endif %}"
+  role="status"
+  aria-label="Memuat…"
+  aria-live="polite"
+>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <g transform="translate(12,12)">
+      <rect class="arm" x="-1.2" y="-10.5" width="2.4" height="6.5" rx="1.2" transform="rotate(0)"/>
+      <rect class="arm" x="-1.2" y="-10.5" width="2.4" height="6.5" rx="1.2" transform="rotate(45)"/>
+      <rect class="arm" x="-1.2" y="-10.5" width="2.4" height="6.5" rx="1.2" transform="rotate(90)"/>
+      <rect class="arm" x="-1.2" y="-10.5" width="2.4" height="6.5" rx="1.2" transform="rotate(135)"/>
+      <rect class="arm" x="-1.2" y="-10.5" width="2.4" height="6.5" rx="1.2" transform="rotate(180)"/>
+      <rect class="arm" x="-1.2" y="-10.5" width="2.4" height="6.5" rx="1.2" transform="rotate(225)"/>
+      <rect class="arm" x="-1.2" y="-10.5" width="2.4" height="6.5" rx="1.2" transform="rotate(270)"/>
+      <rect class="arm" x="-1.2" y="-10.5" width="2.4" height="6.5" rx="1.2" transform="rotate(315)"/>
+    </g>
+  </svg>
+</div>
+{% endwith %}

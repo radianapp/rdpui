@@ -1,0 +1,44 @@
+/*
+ * ============================================================
+ *  RDP Light Theme — v1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Default theme. Memetakan semantic tokens ke nilai terang.
+ *  Aktif secara default; dapat di-override oleh dark.css.
+ * ============================================================
+ */
+
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+  color-scheme: light;
+
+  /* Surface */
+  --rdp-bg: #FFFFFF;
+  --rdp-bg-secondary: #F8F9FA;
+  --rdp-bg-tertiary: #F1F3F5;
+  --rdp-surface: #FFFFFF;
+  --rdp-surface-raised: #FFFFFF;
+  --rdp-surface-overlay: #FFFFFF;
+
+  /* Border */
+  --rdp-border: #DEE2E6;
+  --rdp-border-light: #E9ECEF;
+  --rdp-border-strong: #ADB5BD;
+
+  /* Text */
+  --rdp-text: #212529;
+  --rdp-text-secondary: #495057;
+  --rdp-text-muted: #868E96;
+  --rdp-text-inverse: #FFFFFF;
+  --rdp-text-link: var(--rdp-primary-700);
+  --rdp-text-link-hover: var(--rdp-primary-500);
+
+  /* Shadows — slightly tinted for warmth */
+  --rdp-shadow-xs: 0 1px 2px 0 rgba(12, 35, 64, 0.04);
+  --rdp-shadow-sm: 0 1px 3px 0 rgba(12, 35, 64, 0.08), 0 1px 2px -1px rgba(12, 35, 64, 0.08);
+  --rdp-shadow-md: 0 4px 6px -1px rgba(12, 35, 64, 0.08), 0 2px 4px -2px rgba(12, 35, 64, 0.06);
+  --rdp-shadow-lg: 0 10px 15px -3px rgba(12, 35, 64, 0.08), 0 4px 6px -4px rgba(12, 35, 64, 0.06);
+  --rdp-shadow-xl: 0 20px 25px -5px rgba(12, 35, 64, 0.08), 0 8px 10px -6px rgba(12, 35, 64, 0.06);
+  --rdp-shadow-floating: 0 25px 50px -12px rgba(12, 35, 64, 0.2);
+  --rdp-shadow-modal: 0 0 0 1px rgba(12, 35, 64, 0.04), 0 25px 50px -12px rgba(12, 35, 64, 0.2);
+}

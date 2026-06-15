@@ -1,0 +1,91 @@
+/*
+ * ============================================================
+ *  RDP-UI — Full Bundle Entry Point
+ *  Version: 1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  File ini mengimpor semua modul dalam urutan yang benar.
+ *  Digunakan sebagai entry point untuk build system (Vite)
+ *  dan menghasilkan rdp.css (full bundle).
+ *
+ *  Penggunaan di HTML:
+ *    <link rel="stylesheet" href="https://cdn.radian.web.id/rdp.css">
+ *    <script src="https://cdn.radian.web.id/rdp.js"></script>
+ * ============================================================
+ */
+
+
+/* ═══════════════════════════════════════════════════════════
+   1. RESET & NORMALIZATION
+   ═══════════════════════════════════════════════════════════ */
+
+@import url('./core/reset.css');
+
+
+/* ═══════════════════════════════════════════════════════════
+   2. DESIGN TOKENS
+   ═══════════════════════════════════════════════════════════ */
+
+@import url('./core/tokens.css');
+
+
+/* ═══════════════════════════════════════════════════════════
+   3. PICOCSS OVERRIDE
+   Harus setelah tokens agar variable tersedia.
+   ═══════════════════════════════════════════════════════════ */
+
+@import url('./core/pico-override.css');
+
+
+/* ═══════════════════════════════════════════════════════════
+   4. TYPOGRAPHY
+   Import font definitions dan heading/body styles.
+   ═══════════════════════════════════════════════════════════ */
+
+@import url('./core/typography.css');
+
+
+/* ═══════════════════════════════════════════════════════════
+   5. UTILITY CLASSES
+   ═══════════════════════════════════════════════════════════ */
+
+@import url('./core/utilities.css');
+
+
+/* ═══════════════════════════════════════════════════════════
+   6. THEMES
+   Light (default), Dark, dan Auto (OS preference).
+   ═══════════════════════════════════════════════════════════ */
+
+@import url('./themes/light.css');
+@import url('./themes/dark.css');
+@import url('./themes/auto.css');
+
+
+/* ═══════════════════════════════════════════════════════════
+   7. LAYOUTS
+   ═══════════════════════════════════════════════════════════ */
+
+@import url('./core/layouts/blank.css');
+@import url('./core/layouts/homepage.css');
+@import url('./core/layouts/dashboard.css');
+
+
+/* ═══════════════════════════════════════════════════════════
+   8. CORE COMPONENTS
+   ═══════════════════════════════════════════════════════════ */
+
+@import url('./components/button/button.css');
+@import url('./components/badge/badge.css');
+@import url('./components/alert/alert.css');
+@import url('./components/avatar/avatar.css');
+@import url('./components/card/card.css');
+@import url('./components/spinner/spinner.css');
+@import url('./components/form/form.css');
+@import url('./components/modal/modal.css');
+@import url('./components/dropdown/dropdown.css');
+@import url('./components/tabs/tabs.css');
+@import url('./components/pagination/pagination.css');
+@import url('./components/toast/toast.css');
+@import url('./components/breadcrumb/breadcrumb.css');
+@import url('./components/table/table.css');

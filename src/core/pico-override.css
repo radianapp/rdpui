@@ -1,0 +1,172 @@
+/*
+ * ============================================================
+ *  RDP PicoCSS Override — v1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Memetakan design tokens RDP ke variabel PicoCSS 2.1.1
+ *  sehingga seluruh komponen bawaan PicoCSS menggunakan
+ *  identitas visual RDP secara otomatis.
+ *
+ *  Diload SETELAH PicoCSS dan tokens.css.
+ *
+ *  Referensi PicoCSS vars:
+ *  https://picocss.com/docs/css-variables
+ * ============================================================
+ */
+
+:root {
+
+  /* ── FONT FAMILY ───────────────────────────────────────── */
+
+  --pico-font-family: var(--rdp-sans);
+  --pico-font-family-sans-serif: var(--rdp-sans);
+
+
+  /* ── FONT SIZE ─────────────────────────────────────────── */
+
+  --pico-font-size: 100%;
+
+
+  /* ── LINE HEIGHT ───────────────────────────────────────── */
+
+  --pico-line-height: 1.7;
+
+
+  /* ── FONT WEIGHT ───────────────────────────────────────── */
+
+  --pico-font-weight: 400;
+
+
+  /* ── BORDER RADIUS ─────────────────────────────────────── */
+
+  --pico-border-radius: var(--rdp-radius-md);
+
+
+  /* ── BORDER WIDTH ──────────────────────────────────────── */
+
+  --pico-border-width: 1px;
+
+
+  /* ── OUTLINE WIDTH ─────────────────────────────────────── */
+
+  --pico-outline-width: 2px;
+
+
+  /* ── TRANSITION ────────────────────────────────────────── */
+
+  --pico-transition: var(--rdp-duration-normal) var(--rdp-easing-default);
+
+
+  /* ── SPACING ───────────────────────────────────────────── */
+
+  --pico-spacing: var(--rdp-space-md);
+  --pico-form-element-spacing-vertical: var(--rdp-space-sm);
+  --pico-form-element-spacing-horizontal: var(--rdp-space-md);
+
+
+  /* ── PRIMARY COLORS (Navy → Gold hybrid) ───────────────── */
+
+  --pico-primary: var(--rdp-primary);
+  --pico-primary-hover: var(--rdp-primary-700);
+  --pico-primary-focus: rgba(12, 35, 64, 0.25);
+  --pico-primary-inverse: var(--rdp-text-inverse);
+
+  --pico-primary-background: var(--rdp-primary);
+  --pico-primary-background-hover: var(--rdp-primary-800);
+  --pico-primary-border: var(--rdp-primary);
+  --pico-primary-border-hover: var(--rdp-primary-800);
+
+  --pico-primary-underline: rgba(12, 35, 64, 0.5);
+
+
+  /* ── SECONDARY COLORS (Gold) ───────────────────────────── */
+
+  --pico-secondary: var(--rdp-secondary);
+  --pico-secondary-hover: var(--rdp-secondary-700);
+  --pico-secondary-focus: rgba(184, 125, 46, 0.25);
+  --pico-secondary-inverse: var(--rdp-text-inverse);
+
+  --pico-secondary-background: var(--rdp-secondary);
+  --pico-secondary-background-hover: var(--rdp-secondary-800);
+  --pico-secondary-border: var(--rdp-secondary);
+  --pico-secondary-border-hover: var(--rdp-secondary-800);
+
+
+  /* ── CONTRAST COLORS (muted UI) ────────────────────────── */
+
+  --pico-contrast: var(--rdp-text);
+  --pico-contrast-hover: var(--rdp-primary-900);
+  --pico-contrast-focus: rgba(33, 37, 41, 0.25);
+  --pico-contrast-inverse: var(--rdp-text-inverse);
+
+
+  /* ── BACKGROUND ────────────────────────────────────────── */
+
+  --pico-background-color: var(--rdp-bg);
+
+
+  /* ── TEXT ───────────────────────────────────────────────── */
+
+  --pico-color: var(--rdp-text);
+  --pico-muted-color: var(--rdp-text-muted);
+  --pico-muted-border-color: var(--rdp-border-light);
+
+
+  /* ── CARD ───────────────────────────────────────────────── */
+
+  --pico-card-background-color: var(--rdp-surface);
+  --pico-card-border-color: var(--rdp-border);
+  --pico-card-box-shadow: var(--rdp-shadow-sm);
+  --pico-card-sectioning-background-color: var(--rdp-bg-secondary);
+
+
+  /* ── FORM ───────────────────────────────────────────────── */
+
+  --pico-form-element-background-color: var(--rdp-bg);
+  --pico-form-element-border-color: var(--rdp-border);
+  --pico-form-element-focus-color: var(--rdp-primary);
+  --pico-form-element-valid-border-color: var(--rdp-success);
+  --pico-form-element-invalid-border-color: var(--rdp-danger);
+  --pico-form-element-disabled-opacity: 0.5;
+
+
+  /* ── TABLE ──────────────────────────────────────────────── */
+
+  --pico-table-border-color: var(--rdp-border-light);
+  --pico-table-row-stripped-background-color: var(--rdp-bg-secondary);
+
+
+  /* ── CODE ───────────────────────────────────────────────── */
+
+  --pico-code-background-color: var(--rdp-bg-tertiary);
+  --pico-code-color: var(--rdp-danger-700);
+  --pico-code-font-family: var(--rdp-mono);
+
+
+  /* ── BLOCKQUOTE ────────────────────────────────────────── */
+
+  --pico-blockquote-border-color: var(--rdp-secondary);
+  --pico-blockquote-footer-color: var(--rdp-text-muted);
+}
+
+
+/* ── LINK OVERRIDE ───────────────────────────────────────── */
+
+a {
+  color: var(--rdp-text-link);
+  text-decoration-color: transparent;
+  transition: color var(--rdp-transition), text-decoration-color var(--rdp-transition);
+}
+
+a:hover {
+  color: var(--rdp-text-link-hover);
+  text-decoration-color: currentColor;
+}
+
+
+/* ── CONTAINER OVERRIDE ──────────────────────────────────── */
+
+.container,
+[class*="container"] {
+  max-width: var(--rdp-container-max);
+}

@@ -1,0 +1,173 @@
+/*
+ * ============================================================
+ *  RDP Table Component — v1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Enhancement di atas PicoCSS table default.
+ *  Menambah fitur: striped, hover, sticky header, responsive.
+ *
+ *  Markup:
+ *    <div class="rdp-table-container">
+ *      <table class="rdp-table rdp-table--striped rdp-table--hover">
+ *        <thead>
+ *          <tr><th>Nama</th><th>Email</th></tr>
+ *        </thead>
+ *        <tbody>
+ *          <tr><td>Ahmad</td><td>ahmad@rdp.id</td></tr>
+ *        </tbody>
+ *      </table>
+ *    </div>
+ * ============================================================
+ */
+
+
+/* ── RESPONSIVE WRAPPER ──────────────────────────────────── */
+
+.rdp-table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--rdp-border-light);
+  border-radius: var(--rdp-radius-lg);
+}
+
+
+/* ── BASE TABLE ──────────────────────────────────────────── */
+
+.rdp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-small);
+  margin: 0;
+}
+
+.rdp-table th,
+.rdp-table td {
+  padding: var(--rdp-space-sm) var(--rdp-space-md);
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--rdp-border-light);
+}
+
+.rdp-table th {
+  font-weight: 600;
+  font-size: var(--rdp-size-caption);
+  color: var(--rdp-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background-color: var(--rdp-bg-secondary);
+  white-space: nowrap;
+}
+
+.rdp-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* ── STRIPED ─────────────────────────────────────────────── */
+
+.rdp-table--striped tbody tr:nth-child(even) {
+  background-color: var(--rdp-bg-secondary);
+}
+
+
+/* ── HOVER ───────────────────────────────────────────────── */
+
+.rdp-table--hover tbody tr {
+  transition: background-color var(--rdp-transition);
+}
+
+.rdp-table--hover tbody tr:hover {
+  background-color: var(--rdp-primary-50);
+}
+
+
+/* ── COMPACT ─────────────────────────────────────────────── */
+
+.rdp-table--compact th,
+.rdp-table--compact td {
+  padding: var(--rdp-space-xs) var(--rdp-space-sm);
+  font-size: var(--rdp-size-caption);
+}
+
+
+/* ── BORDERLESS ──────────────────────────────────────────── */
+
+.rdp-table--borderless th,
+.rdp-table--borderless td {
+  border-bottom: none;
+}
+
+
+/* ── STICKY HEADER ───────────────────────────────────────── */
+
+.rdp-table--sticky thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: var(--rdp-bg-secondary);
+  box-shadow: 0 1px 0 0 var(--rdp-border-light);
+}
+
+
+/* ── SORTABLE HEADER ─────────────────────────────────────── */
+
+.rdp-table__sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rdp-space-2xs);
+  cursor: pointer;
+  user-select: none;
+}
+
+.rdp-table__sort:hover {
+  color: var(--rdp-text);
+}
+
+.rdp-table__sort-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+  opacity: 0.4;
+  transition: opacity var(--rdp-transition);
+}
+
+.rdp-table__sort:hover .rdp-table__sort-icon {
+  opacity: 0.8;
+}
+
+.rdp-table__sort.active .rdp-table__sort-icon {
+  opacity: 1;
+  color: var(--rdp-primary);
+}
+
+
+/* ── SELECTABLE ROWS ─────────────────────────────────────── */
+
+.rdp-table--selectable tbody tr {
+  cursor: pointer;
+}
+
+.rdp-table--selectable tbody tr.selected {
+  background-color: var(--rdp-primary-50);
+}
+
+.rdp-table--selectable tbody tr.selected td:first-child {
+  box-shadow: inset 3px 0 0 var(--rdp-primary);
+}
+
+
+/* ── EMPTY STATE ─────────────────────────────────────────── */
+
+.rdp-table__empty {
+  text-align: center;
+  padding: var(--rdp-space-2xl) var(--rdp-space-md);
+  color: var(--rdp-text-muted);
+  font-size: var(--rdp-size-small);
+}
+
+.rdp-table__empty-icon {
+  font-size: 2rem;
+  margin-bottom: var(--rdp-space-sm);
+  opacity: 0.5;
+}

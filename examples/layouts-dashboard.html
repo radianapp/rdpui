@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contoh Dashboard Layout RDP-UI — Layout aplikasi SaaS dengan sidebar.">
+  <title>Dashboard Layout — RDP-UI Example</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.min.css">
+  <link rel="stylesheet" href="../src/rdp.css">
+  <script type="module" src="../src/rdp.js" defer></script>
+</head>
+<body class="rdp-layout-dashboard">
+
+  <!-- ═══ SIDEBAR BACKDROP (mobile) ═══ -->
+  <div class="rdp-sidebar-backdrop"></div>
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="rdp-sidebar">
+    <!-- Brand -->
+    <a href="#" class="rdp-sidebar__brand">
+      <span style="font-size: 1.5rem;">⬡</span>
+      <span class="rdp-sidebar__brand-text">Taliti</span>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="rdp-sidebar__nav">
+      <div class="rdp-sidebar__section">
+        <div class="rdp-sidebar__section-title">Menu Utama</div>
+
+        <a href="#" class="rdp-sidebar__link active" aria-current="page">
+          <span class="rdp-sidebar__link-icon">📊</span>
+          <span class="rdp-sidebar__link-text">Dashboard</span>
+        </a>
+        <a href="#" class="rdp-sidebar__link">
+          <span class="rdp-sidebar__link-icon">📁</span>
+          <span class="rdp-sidebar__link-text">Proyek</span>
+          <span class="rdp-sidebar__badge">3</span>
+        </a>
+        <a href="#" class="rdp-sidebar__link">
+          <span class="rdp-sidebar__link-icon">📈</span>
+          <span class="rdp-sidebar__link-text">Analisis</span>
+        </a>
+        <a href="#" class="rdp-sidebar__link">
+          <span class="rdp-sidebar__link-icon">📋</span>
+          <span class="rdp-sidebar__link-text">Laporan</span>
+        </a>
+      </div>
+
+      <div class="rdp-sidebar__section">
+        <div class="rdp-sidebar__section-title">Data</div>
+
+        <a href="#" class="rdp-sidebar__link">
+          <span class="rdp-sidebar__link-icon">🗄️</span>
+          <span class="rdp-sidebar__link-text">Database</span>
+        </a>
+        <a href="#" class="rdp-sidebar__link">
+          <span class="rdp-sidebar__link-icon">🔗</span>
+          <span class="rdp-sidebar__link-text">Koneksi</span>
+        </a>
+        <a href="#" class="rdp-sidebar__link">
+          <span class="rdp-sidebar__link-icon">📤</span>
+          <span class="rdp-sidebar__link-text">Ekspor</span>
+        </a>
+      </div>
+
+      <div class="rdp-sidebar__section">
+        <div class="rdp-sidebar__section-title">Pengaturan</div>
+
+        <a href="#" class="rdp-sidebar__link">
+          <span class="rdp-sidebar__link-icon">👥</span>
+          <span class="rdp-sidebar__link-text">Tim</span>
+        </a>
+        <a href="#" class="rdp-sidebar__link">
+          <span class="rdp-sidebar__link-icon">⚙️</span>
+          <span class="rdp-sidebar__link-text">Pengaturan</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Sidebar Footer -->
+    <div class="rdp-sidebar__footer">
+      <a href="#" class="rdp-sidebar__link">
+        <div class="rdp-avatar rdp-avatar--sm" style="background: var(--rdp-secondary-200); color: var(--rdp-secondary-900);">
+          <span class="rdp-avatar__initials">RD</span>
+        </div>
+        <span class="rdp-sidebar__link-text">Rahadi</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ═══ MAIN AREA ═══ -->
+  <div class="rdp-dashboard-main">
+    <!-- Topbar -->
+    <header class="rdp-dashboard-topbar">
+      <button class="rdp-dashboard-topbar__toggle" data-rdp-action="toggle-sidebar" aria-label="Toggle sidebar">
+        ☰
+      </button>
+      <h1 class="rdp-dashboard-topbar__title">Dashboard</h1>
+      <div class="rdp-dashboard-topbar__actions">
+        <button class="rdp-btn rdp-btn--sm rdp-btn--ghost" data-rdp-action="set-theme" data-rdp-theme="dark" title="Toggle dark mode">🌙</button>
+        <button class="rdp-btn rdp-btn--sm rdp-btn--ghost">🔔</button>
+        <div class="rdp-avatar rdp-avatar--sm">
+          <span class="rdp-avatar__initials">RD</span>
+          <span class="rdp-avatar__status rdp-avatar__status--online"></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb">
+      <ul class="rdp-breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Proyek</a></li>
+        <li>Dashboard Analisis</li>
+      </ul>
+    </nav>
+
+    <!-- Content -->
+    <main class="rdp-dashboard-content">
+      <!-- Page Header -->
+      <div class="rdp-page-header">
+        <h2 class="rdp-page-header__title">Overview</h2>
+        <div class="rdp-page-header__actions">
+          <button class="rdp-btn rdp-btn--sm rdp-btn--outline">Ekspor</button>
+          <button class="rdp-btn rdp-btn--sm rdp-btn--primary">+ Tambah Data</button>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="rdp-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: var(--rdp-space-xl);">
+        <article class="rdp-card rdp-card--stats">
+          <div class="rdp-card__value" style="color: var(--rdp-primary);">12,847</div>
+          <div class="rdp-card__label">Total Records</div>
+          <div class="rdp-card__change rdp-card__change--up">↑ 12.5%</div>
+        </article>
+        <article class="rdp-card rdp-card--stats">
+          <div class="rdp-card__value" style="color: var(--rdp-secondary);">3,241</div>
+          <div class="rdp-card__label">Processed Today</div>
+          <div class="rdp-card__change rdp-card__change--up">↑ 8.2%</div>
+        </article>
+        <article class="rdp-card rdp-card--stats">
+          <div class="rdp-card__value" style="color: var(--rdp-accent);">98.7%</div>
+          <div class="rdp-card__label">Accuracy</div>
+          <div class="rdp-card__change rdp-card__change--up">↑ 0.3%</div>
+        </article>
+        <article class="rdp-card rdp-card--stats">
+          <div class="rdp-card__value" style="color: var(--rdp-danger);">14</div>
+          <div class="rdp-card__label">Errors</div>
+          <div class="rdp-card__change rdp-card__change--down">↓ 23%</div>
+        </article>
+      </div>
+
+      <!-- Alert -->
+      <div class="rdp-alert rdp-alert--info rdp-alert--dismissible" role="alert">
+        <div class="rdp-alert__content">
+          <strong>Pembaruan:</strong> Versi baru pipeline tersedia. <a href="#">Lihat changelog</a>
+        </div>
+        <button class="rdp-alert__close" data-rdp-action="dismiss-alert" aria-label="Tutup">&times;</button>
+      </div>
+
+      <!-- Content Cards -->
+      <div class="rdp-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+        <article class="rdp-card">
+          <header class="rdp-card__header rdp-card__header--bordered">
+            <div class="rdp-flex rdp-justify-between rdp-items-center">
+              <h3 class="rdp-card__title">Aktivitas Terbaru</h3>
+              <a href="#" class="rdp-link" style="font-size: var(--rdp-size-small);">Lihat semua</a>
+            </div>
+          </header>
+          <div class="rdp-card__body">
+            <div class="rdp-stack-sm">
+              <div class="rdp-flex rdp-gap-sm rdp-items-center">
+                <div class="rdp-avatar rdp-avatar--sm"><span class="rdp-avatar__initials">AB</span></div>
+                <div class="rdp-flex-1">
+                  <div class="rdp-ui">Ahmad menambahkan 500 records</div>
+                  <div class="rdp-caption">2 menit yang lalu</div>
+                </div>
+                <span class="rdp-badge rdp-badge--success rdp-badge--sm">Selesai</span>
+              </div>
+              <div class="rdp-flex rdp-gap-sm rdp-items-center">
+                <div class="rdp-avatar rdp-avatar--sm rdp-avatar--secondary"><span class="rdp-avatar__initials">CD</span></div>
+                <div class="rdp-flex-1">
+                  <div class="rdp-ui">Cindy mengekspor laporan</div>
+                  <div class="rdp-caption">15 menit yang lalu</div>
+                </div>
+                <span class="rdp-badge rdp-badge--info rdp-badge--sm">Proses</span>
+              </div>
+              <div class="rdp-flex rdp-gap-sm rdp-items-center">
+                <div class="rdp-avatar rdp-avatar--sm rdp-avatar--accent"><span class="rdp-avatar__initials">EF</span></div>
+                <div class="rdp-flex-1">
+                  <div class="rdp-ui">Eko memperbarui pipeline</div>
+                  <div class="rdp-caption">1 jam yang lalu</div>
+                </div>
+                <span class="rdp-badge rdp-badge--warning rdp-badge--sm">Review</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="rdp-card">
+          <header class="rdp-card__header rdp-card__header--bordered">
+            <h3 class="rdp-card__title">Data Terbaru</h3>
+          </header>
+          <div class="rdp-card__body" style="padding: 0;">
+            <div class="rdp-overflow-x-auto">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>Status</th>
+                    <th>Tanggal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="rdp-numeric">#1024</td>
+                    <td>Data Penjualan Q2</td>
+                    <td><span class="rdp-badge rdp-badge--success rdp-badge--sm">Aktif</span></td>
+                    <td class="rdp-caption">15 Jun 2026</td>
+                  </tr>
+                  <tr>
+                    <td class="rdp-numeric">#1023</td>
+                    <td>Inventory Report</td>
+                    <td><span class="rdp-badge rdp-badge--warning rdp-badge--sm">Pending</span></td>
+                    <td class="rdp-caption">14 Jun 2026</td>
+                  </tr>
+                  <tr>
+                    <td class="rdp-numeric">#1022</td>
+                    <td>User Analytics</td>
+                    <td><span class="rdp-badge rdp-badge--danger rdp-badge--sm">Error</span></td>
+                    <td class="rdp-caption">13 Jun 2026</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <!-- Dashboard Footer -->
+    <footer class="rdp-dashboard-footer">
+      RDP-UI v1.0.0 · © 2026 Radian Data Platform · Radian Data Platform
+    </footer>
+  </div>
+
+</body>
+</html>

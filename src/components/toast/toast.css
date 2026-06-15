@@ -1,0 +1,252 @@
+/*
+ * ============================================================
+ *  RDP Toast Component — v1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Notifikasi toast yang muncul di sudut layar.
+ *
+ *  Markup:
+ *    <div class="rdp-toast-container rdp-toast-container--top-right">
+ *      <div class="rdp-toast rdp-toast--success">
+ *        <div class="rdp-toast__content">Berhasil disimpan!</div>
+ *        <button class="rdp-toast__close">&times;</button>
+ *      </div>
+ *    </div>
+ * ============================================================
+ */
+
+
+/* ── CONTAINER (positioning) ─────────────────────────────── */
+
+.rdp-toast-container {
+  position: fixed;
+  z-index: var(--rdp-z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--rdp-space-sm);
+  pointer-events: none;
+  max-width: min(90vw, 400px);
+}
+
+.rdp-toast-container--top-right {
+  top: var(--rdp-space-md);
+  right: var(--rdp-space-md);
+}
+
+.rdp-toast-container--top-left {
+  top: var(--rdp-space-md);
+  left: var(--rdp-space-md);
+}
+
+.rdp-toast-container--top-center {
+  top: var(--rdp-space-md);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.rdp-toast-container--bottom-right {
+  bottom: var(--rdp-space-md);
+  right: var(--rdp-space-md);
+}
+
+.rdp-toast-container--bottom-left {
+  bottom: var(--rdp-space-md);
+  left: var(--rdp-space-md);
+}
+
+.rdp-toast-container--bottom-center {
+  bottom: var(--rdp-space-md);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+/* ── TOAST BASE ──────────────────────────────────────────── */
+
+.rdp-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--rdp-space-sm);
+
+  padding: var(--rdp-space-md);
+  min-width: 280px;
+
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-small);
+  line-height: var(--rdp-leading-normal);
+
+  background-color: var(--rdp-surface);
+  border: 1px solid var(--rdp-border);
+  border-radius: var(--rdp-radius-lg);
+  box-shadow: var(--rdp-shadow-lg);
+  color: var(--rdp-text);
+
+  position: relative;
+  overflow: hidden;
+  pointer-events: auto;
+  animation: rdp-toast-in var(--rdp-duration-slow) var(--rdp-easing-default);
+}
+
+
+/* ── VARIANTS ────────────────────────────────────────────── */
+
+.rdp-toast--success {
+  border-left: 4px solid var(--rdp-success);
+}
+
+.rdp-toast--danger {
+  border-left: 4px solid var(--rdp-danger);
+}
+
+.rdp-toast--warning {
+  border-left: 4px solid var(--rdp-warning);
+}
+
+.rdp-toast--info {
+  border-left: 4px solid var(--rdp-info);
+}
+
+
+/* ── CONTENT ─────────────────────────────────────────────── */
+
+.rdp-toast__icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.0625rem;
+}
+
+.rdp-toast__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.rdp-toast__title {
+  font-weight: 600;
+  margin-bottom: var(--rdp-space-2xs);
+}
+
+.rdp-toast__message {
+  color: var(--rdp-text-secondary);
+}
+
+.rdp-toast__action {
+  background: transparent;
+  border: 1px solid var(--rdp-border-strong);
+  color: var(--rdp-text);
+  font-size: var(--rdp-size-micro);
+  font-weight: 600;
+  padding: 0.125rem var(--rdp-space-sm);
+  border-radius: var(--rdp-radius-sm);
+  cursor: pointer;
+  margin-top: var(--rdp-space-xs);
+  display: inline-block;
+  transition: all var(--rdp-transition);
+}
+
+.rdp-toast__action:hover {
+  background-color: var(--rdp-bg-secondary);
+  border-color: var(--rdp-text-secondary);
+}
+
+.rdp-toast--success .rdp-toast__action {
+  border-color: var(--rdp-success-300);
+  color: var(--rdp-success);
+}
+.rdp-toast--success .rdp-toast__action:hover {
+  background-color: var(--rdp-success-50);
+  border-color: var(--rdp-success);
+}
+
+.rdp-toast--danger .rdp-toast__action {
+  border-color: var(--rdp-danger-300);
+  color: var(--rdp-danger);
+}
+.rdp-toast--danger .rdp-toast__action:hover {
+  background-color: var(--rdp-danger-50);
+  border-color: var(--rdp-danger);
+}
+
+
+/* ── CLOSE BUTTON ────────────────────────────────────────── */
+
+.rdp-toast__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+
+  background: transparent;
+  border: none;
+  border-radius: var(--rdp-radius-sm);
+  color: var(--rdp-text-muted);
+  font-size: 1.125rem;
+  cursor: pointer;
+
+  transition: background-color var(--rdp-transition), color var(--rdp-transition);
+}
+
+.rdp-toast__close:hover {
+  background-color: var(--rdp-bg-secondary);
+  color: var(--rdp-text);
+}
+
+
+/* ── PROGRESS BAR ────────────────────────────────────────── */
+
+.rdp-toast__progress {
+  position: absolute;
+  bottom: 0;
+  left: 4px;
+  right: 0;
+  height: 3px;
+  background-color: var(--rdp-primary);
+  border-radius: 0 0 var(--rdp-radius-lg) 0;
+  animation: rdp-toast-progress 5s linear forwards;
+}
+
+.rdp-toast--success .rdp-toast__progress {
+  background-color: var(--rdp-success);
+}
+
+.rdp-toast--danger .rdp-toast__progress {
+  background-color: var(--rdp-danger);
+}
+
+
+/* ── ANIMATIONS ──────────────────────────────────────────── */
+
+@keyframes rdp-toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.rdp-toast--hiding {
+  animation: rdp-toast-out var(--rdp-duration-normal) var(--rdp-easing-default) forwards;
+}
+
+@keyframes rdp-toast-out {
+  to {
+    opacity: 0;
+    transform: translateX(1rem);
+  }
+}
+
+@keyframes rdp-toast-progress {
+  from {
+    width: 100%;
+  }
+
+  to {
+    width: 0%;
+  }
+}

@@ -1,0 +1,242 @@
+/*
+ * ============================================================
+ *  RDP Card Component — v1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Markup:
+ *    <article class="rdp-card">
+ *      <header class="rdp-card__header">
+ *        <h3 class="rdp-card__title">Judul</h3>
+ *      </header>
+ *      <div class="rdp-card__body">Konten</div>
+ *      <footer class="rdp-card__footer">Footer</footer>
+ *    </article>
+ * ============================================================
+ */
+
+
+/* ── BASE CARD ───────────────────────────────────────────── */
+
+.rdp-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--rdp-surface);
+  border: 1px solid var(--rdp-border);
+  border-radius: var(--rdp-radius-lg);
+  box-shadow: var(--rdp-shadow-xs);
+  overflow: hidden;
+
+  transition:
+    box-shadow var(--rdp-transition),
+    transform var(--rdp-transition),
+    border-color var(--rdp-transition);
+}
+
+
+/* ── HEADER ──────────────────────────────────────────────── */
+
+.rdp-card__header {
+  padding: var(--rdp-space-md) var(--rdp-space-md) 0;
+}
+
+.rdp-card__header--bordered {
+  padding-bottom: var(--rdp-space-md);
+  border-bottom: 1px solid var(--rdp-border-light);
+}
+
+.rdp-card__title {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-h3);
+  font-weight: 600;
+  margin: 0;
+  color: var(--rdp-text);
+}
+
+.rdp-card__subtitle {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-small);
+  color: var(--rdp-text-muted);
+  margin: var(--rdp-space-2xs) 0 0;
+}
+
+
+/* ── BODY ────────────────────────────────────────────────── */
+
+.rdp-card__body {
+  padding: var(--rdp-space-md);
+  flex: 1;
+}
+
+.rdp-card__body:first-child {
+  padding-top: var(--rdp-space-md);
+}
+
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+
+.rdp-card__footer {
+  padding: 0 var(--rdp-space-md) var(--rdp-space-md);
+}
+
+.rdp-card__footer--bordered {
+  padding-top: var(--rdp-space-md);
+  border-top: 1px solid var(--rdp-border-light);
+}
+
+
+/* ── IMAGE / MEDIA ───────────────────────────────────────── */
+
+.rdp-card__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.rdp-card__image:first-child {
+  border-radius: var(--rdp-radius-lg) var(--rdp-radius-lg) 0 0;
+}
+
+
+/* ── HOVER EFFECT ────────────────────────────────────────── */
+
+.rdp-card--hover:hover {
+  box-shadow: var(--rdp-shadow-md);
+  border-color: var(--rdp-border-strong);
+}
+
+
+/* ── CLICKABLE CARD ──────────────────────────────────────── */
+
+.rdp-card--clickable {
+  cursor: pointer;
+}
+
+.rdp-card--clickable:hover {
+  box-shadow: var(--rdp-shadow-md);
+  border-color: var(--rdp-border-strong);
+  transform: translateY(-2px);
+}
+
+.rdp-card--clickable:active {
+  transform: translateY(0);
+  box-shadow: var(--rdp-shadow-sm);
+}
+
+
+/* ── VARIANTS ────────────────────────────────────────────── */
+
+/* Outlined — no shadow */
+.rdp-card--outlined {
+  box-shadow: none;
+}
+
+/* Elevated — stronger shadow */
+.rdp-card--elevated {
+  box-shadow: var(--rdp-shadow-md);
+  border-color: transparent;
+}
+
+/* Flat — no border, no shadow, tinted background */
+.rdp-card--flat {
+  box-shadow: none;
+  border-color: transparent;
+  background-color: var(--rdp-bg-secondary);
+}
+
+/* Brand card */
+.rdp-card--primary {
+  border-top: 3px solid var(--rdp-primary);
+}
+
+.rdp-card--secondary {
+  border-top: 3px solid var(--rdp-secondary);
+}
+
+.rdp-card--accent {
+  border-top: 3px solid var(--rdp-accent);
+}
+
+
+/* ── PADDING VARIANTS ────────────────────────────────────── */
+
+.rdp-card--compact .rdp-card__header,
+.rdp-card--compact .rdp-card__body,
+.rdp-card--compact .rdp-card__footer {
+  padding: var(--rdp-space-sm);
+}
+
+.rdp-card--spacious .rdp-card__header,
+.rdp-card--spacious .rdp-card__body,
+.rdp-card--spacious .rdp-card__footer {
+  padding: var(--rdp-space-lg);
+}
+
+@media (min-width: 768px) {
+
+  .rdp-card--spacious .rdp-card__header,
+  .rdp-card--spacious .rdp-card__body,
+  .rdp-card--spacious .rdp-card__footer {
+    padding: var(--rdp-space-xl);
+  }
+}
+
+
+/* ── HORIZONTAL CARD (media + content side by side) ──────── */
+
+@media (min-width: 768px) {
+  .rdp-card--horizontal {
+    flex-direction: row;
+  }
+
+  .rdp-card--horizontal .rdp-card__image {
+    width: 40%;
+    aspect-ratio: auto;
+    border-radius: var(--rdp-radius-lg) 0 0 var(--rdp-radius-lg);
+  }
+
+  .rdp-card--horizontal .rdp-card__image:first-child {
+    border-radius: var(--rdp-radius-lg) 0 0 var(--rdp-radius-lg);
+  }
+}
+
+
+/* ── STATS CARD (Business) ───────────────────────────────── */
+
+.rdp-card--stats {
+  text-align: center;
+  padding: var(--rdp-space-lg);
+}
+
+.rdp-card--stats .rdp-card__value {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-h1);
+  font-weight: 700;
+  color: var(--rdp-primary);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: var(--rdp-space-2xs);
+}
+
+.rdp-card--stats .rdp-card__label {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-small);
+  color: var(--rdp-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.rdp-card--stats .rdp-card__change {
+  font-size: var(--rdp-size-caption);
+  font-weight: 600;
+  margin-top: var(--rdp-space-xs);
+}
+
+.rdp-card--stats .rdp-card__change--up {
+  color: var(--rdp-success);
+}
+
+.rdp-card--stats .rdp-card__change--down {
+  color: var(--rdp-danger);
+}

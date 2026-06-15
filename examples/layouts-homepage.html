@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contoh Homepage Layout RDP-UI — Landing page produk SaaS.">
+  <title>Homepage Layout — RDP-UI Example</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.min.css">
+  <link rel="stylesheet" href="../src/rdp.css">
+  <script type="module" src="../src/rdp.js" defer></script>
+</head>
+<body class="rdp-layout-homepage">
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="rdp-topnav">
+    <a href="#" class="rdp-topnav__brand">
+      <strong>Radian</strong>
+    </a>
+
+    <ul class="rdp-topnav__links">
+      <li><a href="#features" class="active">Fitur</a></li>
+      <li><a href="#pricing">Harga</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Kontak</a></li>
+    </ul>
+
+    <div class="rdp-topnav__actions">
+      <a href="../examples/layouts-blank.html" class="rdp-btn rdp-btn--sm rdp-btn--ghost rdp-hidden-mobile">Masuk</a>
+      <a href="#" class="rdp-btn rdp-btn--sm rdp-btn--primary">Daftar</a>
+      <button class="rdp-topnav__toggle" data-rdp-action="toggle-mobile-nav" aria-label="Toggle menu">
+        ☰
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="rdp-topnav__mobile">
+      <a href="#features">Fitur</a>
+      <a href="#pricing">Harga</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Kontak</a>
+      <a href="../examples/layouts-blank.html">Masuk</a>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="rdp-hero" style="background-color: var(--rdp-cream);">
+    <div class="rdp-hero__inner">
+      <p class="rdp-hero__overline">Radian Data Platform</p>
+      <h1 class="rdp-hero__title">Platform Data<br>untuk Indonesia</h1>
+      <p class="rdp-hero__subtitle">
+        Solusi end-to-end untuk pengelolaan, analisis, dan monetisasi data.
+        Dibangun untuk skala enterprise dengan keamanan terbaik.
+      </p>
+      <div class="rdp-hero__actions">
+        <a href="#" class="rdp-btn rdp-btn--primary rdp-btn--lg">Mulai Gratis</a>
+        <a href="#" class="rdp-btn rdp-btn--outline rdp-btn--lg">Lihat Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURES ═══ -->
+  <section class="rdp-section" id="features">
+    <div class="rdp-section__inner">
+      <div class="rdp-section__header">
+        <p class="rdp-overline" style="color: var(--rdp-secondary);">Fitur Utama</p>
+        <h2 class="rdp-section__title">Semua yang Anda Butuhkan</h2>
+        <p class="rdp-section__description">
+          Dari pengumpulan data hingga insight yang actionable, semua dalam satu platform.
+        </p>
+      </div>
+
+      <div class="rdp-grid rdp-grid-responsive">
+        <article class="rdp-card rdp-card--flat">
+          <div class="rdp-card__body">
+            <div class="rdp-mb-sm" style="font-size: 2rem;">📊</div>
+            <h3 class="rdp-card__title">Analisis Data</h3>
+            <p class="rdp-caption">Query data dari berbagai sumber dengan SQL editor yang powerful.</p>
+          </div>
+        </article>
+
+        <article class="rdp-card rdp-card--flat">
+          <div class="rdp-card__body">
+            <div class="rdp-mb-sm" style="font-size: 2rem;">🔒</div>
+            <h3 class="rdp-card__title">Keamanan</h3>
+            <p class="rdp-caption">Enkripsi end-to-end dan kontrol akses berbasis peran (RBAC).</p>
+          </div>
+        </article>
+
+        <article class="rdp-card rdp-card--flat">
+          <div class="rdp-card__body">
+            <div class="rdp-mb-sm" style="font-size: 2rem;">⚡</div>
+            <h3 class="rdp-card__title">Performa Tinggi</h3>
+            <p class="rdp-caption">Proses jutaan record dalam hitungan detik dengan engine terbaru.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STATS ═══ -->
+  <section class="rdp-section rdp-section--cream">
+    <div class="rdp-section__inner">
+      <div class="rdp-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); text-align: center;">
+        <div>
+          <div class="rdp-display-sm" style="color: var(--rdp-primary);">500+</div>
+          <p class="rdp-caption rdp-mt-xs">Perusahaan</p>
+        </div>
+        <div>
+          <div class="rdp-display-sm" style="color: var(--rdp-secondary);">12M+</div>
+          <p class="rdp-caption rdp-mt-xs">Data Terproses</p>
+        </div>
+        <div>
+          <div class="rdp-display-sm" style="color: var(--rdp-accent);">99.9%</div>
+          <p class="rdp-caption rdp-mt-xs">Uptime</p>
+        </div>
+        <div>
+          <div class="rdp-display-sm" style="color: var(--rdp-primary);">24/7</div>
+          <p class="rdp-caption rdp-mt-xs">Support</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRICING ═══ -->
+  <section class="rdp-section" id="pricing">
+    <div class="rdp-section__inner">
+      <div class="rdp-section__header">
+        <p class="rdp-overline" style="color: var(--rdp-secondary);">Harga</p>
+        <h2 class="rdp-section__title">Paket Harga Sederhana</h2>
+        <p class="rdp-section__description">Pilih paket yang sesuai dengan kebutuhan tim Anda.</p>
+      </div>
+
+      <div class="rdp-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 900px; margin-inline: auto;">
+        <article class="rdp-card rdp-card--hover">
+          <div class="rdp-card__body rdp-text-center">
+            <h3 class="rdp-card__title">Starter</h3>
+            <div class="rdp-display-sm rdp-my-md" style="color: var(--rdp-primary);">Gratis</div>
+            <ul class="rdp-list-none rdp-stack-sm" style="font-size: var(--rdp-size-small); color: var(--rdp-text-secondary);">
+              <li>✓ 1 Pengguna</li>
+              <li>✓ 10 GB Penyimpanan</li>
+              <li>✓ Analisis Dasar</li>
+              <li>✓ Support Email</li>
+            </ul>
+          </div>
+          <footer class="rdp-card__footer">
+            <a href="#" class="rdp-btn rdp-btn--outline rdp-btn--block">Mulai Gratis</a>
+          </footer>
+        </article>
+
+        <article class="rdp-card rdp-card--elevated rdp-card--primary">
+          <div class="rdp-card__body rdp-text-center">
+            <span class="rdp-badge rdp-badge--solid-secondary rdp-mb-sm" style="display: inline-flex;">Popular</span>
+            <h3 class="rdp-card__title">Business</h3>
+            <div class="rdp-display-sm rdp-my-md" style="color: var(--rdp-primary);">Rp 1.5jt<small class="rdp-caption">/bulan</small></div>
+            <ul class="rdp-list-none rdp-stack-sm" style="font-size: var(--rdp-size-small); color: var(--rdp-text-secondary);">
+              <li>✓ 10 Pengguna</li>
+              <li>✓ 100 GB Penyimpanan</li>
+              <li>✓ Analisis Lanjutan</li>
+              <li>✓ Support Prioritas</li>
+              <li>✓ API Access</li>
+            </ul>
+          </div>
+          <footer class="rdp-card__footer">
+            <a href="#" class="rdp-btn rdp-btn--primary rdp-btn--block">Pilih Paket</a>
+          </footer>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="rdp-footer">
+    <div class="rdp-footer__inner">
+      <div class="rdp-footer__grid">
+        <div>
+          <div class="rdp-footer__brand">Radian</div>
+          <p>Platform data terpadu untuk Indonesia. Membantu perusahaan membuat keputusan berbasis data.</p>
+        </div>
+        <div>
+          <div class="rdp-footer__heading">Produk</div>
+          <ul class="rdp-footer__links">
+            <li><a href="#">Taliti</a></li>
+            <li><a href="#">Akun</a></li>
+            <li><a href="#">TMPT</a></li>
+            <li><a href="#">Marketplace Data</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="rdp-footer__heading">Perusahaan</div>
+          <ul class="rdp-footer__links">
+            <li><a href="#">Tentang</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Karir</a></li>
+            <li><a href="#">Kontak</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="rdp-footer__heading">Legal</div>
+          <ul class="rdp-footer__links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="rdp-footer__bottom">
+        <span>© 2026 Radian Data Platform</span>
+        <span>Built with RDP-UI</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

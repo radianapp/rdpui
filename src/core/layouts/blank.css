@@ -1,0 +1,111 @@
+/*
+ * ============================================================
+ *  RDP Blank Layout — v1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Layout minimalis untuk halaman otonom:
+ *    - Login / Register
+ *    - Reset Password
+ *    - Error Pages (404, 500)
+ *    - Maintenance Page
+ *
+ *  Markup:
+ *    <body class="rdp-layout-blank">
+ *      <main class="rdp-blank">
+ *        <div class="rdp-blank__card">
+ *          <div class="rdp-blank__logo">Logo</div>
+ *          <h1>Login</h1>
+ *          <form>...</form>
+ *        </div>
+ *      </main>
+ *    </body>
+ * ============================================================
+ */
+
+.rdp-layout-blank {
+  background-color: var(--rdp-cream, #F5F2EE);
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.rdp-blank {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: var(--rdp-space-md);
+}
+
+.rdp-blank__card {
+  width: 100%;
+  max-width: 420px;
+  background-color: var(--rdp-surface);
+  border-radius: var(--rdp-radius-xl);
+  box-shadow: var(--rdp-shadow-lg);
+  padding: var(--rdp-space-xl);
+}
+
+@media (min-width: 768px) {
+  .rdp-blank__card {
+    padding: var(--rdp-space-2xl);
+  }
+}
+
+.rdp-blank__logo {
+  text-align: center;
+  margin-bottom: var(--rdp-space-lg);
+}
+
+.rdp-blank__logo img {
+  max-height: 3rem;
+  margin-inline: auto;
+}
+
+.rdp-blank__title {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-h2);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: var(--rdp-space-xs);
+  color: var(--rdp-text);
+}
+
+.rdp-blank__subtitle {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-small);
+  text-align: center;
+  color: var(--rdp-text-muted);
+  margin-bottom: var(--rdp-space-lg);
+}
+
+.rdp-blank__footer {
+  text-align: center;
+  margin-top: var(--rdp-space-lg);
+  font-size: var(--rdp-size-small);
+  color: var(--rdp-text-muted);
+}
+
+.rdp-blank__footer a {
+  color: var(--rdp-text-link);
+  font-weight: 500;
+}
+
+/* Divider with text ("atau") */
+.rdp-blank__divider {
+  display: flex;
+  align-items: center;
+  gap: var(--rdp-space-sm);
+  margin-block: var(--rdp-space-md);
+  color: var(--rdp-text-muted);
+  font-size: var(--rdp-size-caption);
+}
+
+.rdp-blank__divider::before,
+.rdp-blank__divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--rdp-border);
+}

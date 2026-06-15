@@ -1,0 +1,186 @@
+/*
+ * ============================================================
+ *  RDP Reset — v1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Reset/normalize minimal di atas PicoCSS.
+ *  PicoCSS sudah menangani sebagian besar normalisasi,
+ *  file ini menambahkan standar RDP-specific.
+ *
+ *  Diload SEBELUM pico-override.css dan typography.css.
+ * ============================================================
+ */
+
+
+/* ── BOX MODEL ───────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* ── SMOOTH SCROLLING ────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Nonaktifkan smooth scroll untuk pengguna yang prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ── BODY DEFAULTS ───────────────────────────────────────── */
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* ── MEDIA DEFAULTS ──────────────────────────────────────── */
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* ── FORM RESET ──────────────────────────────────────────── */
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+
+/* ── TYPOGRAPHY RESET ────────────────────────────────────── */
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+
+/* ── FOCUS MANAGEMENT ────────────────────────────────────── */
+
+/*
+ * Focus visible: hanya tampilkan outline saat navigasi keyboard.
+ * Menggunakan warna primary RDP untuk konsistensi brand.
+ */
+:focus-visible {
+  outline: 2px solid var(--rdp-primary-500, #3B6797);
+  outline-offset: 2px;
+  border-radius: var(--rdp-radius-sm, 4px);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+/* ── SKIP NAVIGATION ─────────────────────────────────────── */
+
+.rdp-skip-nav {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: var(--rdp-z-tooltip, 1070);
+}
+
+.rdp-skip-nav:focus {
+  position: fixed;
+  top: var(--rdp-space-sm, 8px);
+  left: var(--rdp-space-sm, 8px);
+  width: auto;
+  height: auto;
+  padding: var(--rdp-space-sm, 8px) var(--rdp-space-md, 16px);
+  background: var(--rdp-primary, #091A30);
+  color: var(--rdp-text-inverse, #FFFFFF);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--rdp-radius-md, 8px);
+  box-shadow: var(--rdp-shadow-lg);
+}
+
+
+/* ── SELECTION ───────────────────────────────────────────── */
+
+::selection {
+  background: var(--rdp-primary-200, #9EB2CC);
+  color: var(--rdp-primary-900, #091A30);
+}
+
+
+/* ── SCROLLBAR (Webkit) ──────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--rdp-bg-secondary, #F8F9FA);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--rdp-border-strong, #ADB5BD);
+  border-radius: var(--rdp-radius-pill, 9999px);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--rdp-text-muted, #868E96);
+}
+
+
+/* ── TABLE DEFAULTS ──────────────────────────────────────── */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}

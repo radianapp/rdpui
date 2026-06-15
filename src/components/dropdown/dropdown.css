@@ -1,0 +1,189 @@
+/*
+ * ============================================================
+ *  RDP Dropdown Component — v1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Dropdown menu menggunakan <details> HTML native.
+ *  Tidak memerlukan JavaScript.
+ *
+ *  Markup:
+ *    <details class="rdp-dropdown">
+ *      <summary class="rdp-dropdown__trigger">Menu ▾</summary>
+ *      <div class="rdp-dropdown__menu">
+ *        <a href="#" class="rdp-dropdown__item">Item 1</a>
+ *        <a href="#" class="rdp-dropdown__item">Item 2</a>
+ *        <hr class="rdp-dropdown__divider">
+ *        <a href="#" class="rdp-dropdown__item rdp-dropdown__item--danger">Hapus</a>
+ *      </div>
+ *    </details>
+ * ============================================================
+ */
+
+
+/* ── BASE ────────────────────────────────────────────────── */
+
+.rdp-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.rdp-dropdown__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rdp-space-xs);
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-small);
+  font-weight: 500;
+  color: var(--rdp-text);
+  padding: var(--rdp-space-xs) var(--rdp-space-sm);
+  border-radius: var(--rdp-radius-md);
+  transition: background-color var(--rdp-transition);
+}
+
+.rdp-dropdown__trigger::-webkit-details-marker {
+  display: none;
+}
+
+.rdp-dropdown__trigger::marker {
+  content: "";
+}
+
+.rdp-dropdown__trigger:hover {
+  background-color: var(--rdp-bg-secondary);
+}
+
+
+/* Hide PicoCSS summary arrow */
+.rdp-dropdown summary::after {
+  display: none !important;
+}
+
+/* ── MENU ────────────────────────────────────────────────── */
+
+.rdp-dropdown__menu {
+  position: absolute;
+  top: calc(100% + var(--rdp-space-2xs));
+  left: 0;
+  z-index: var(--rdp-z-dropdown);
+
+  min-width: 180px;
+  margin: 0;
+  padding: var(--rdp-space-2xs);
+  list-style: none;
+
+  background-color: var(--rdp-surface);
+  border: 1px solid var(--rdp-border);
+  border-radius: var(--rdp-radius-lg);
+  box-shadow: var(--rdp-shadow-lg);
+
+  animation: rdp-dropdown-show var(--rdp-duration-fast) var(--rdp-easing-default);
+}
+
+.rdp-dropdown__menu li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rdp-dropdown__menu li::before {
+  display: none !important;
+}
+
+/* Right-aligned menu */
+.rdp-dropdown--right .rdp-dropdown__menu {
+  left: auto;
+  right: 0;
+}
+
+/* Upward menu */
+.rdp-dropdown--up .rdp-dropdown__menu {
+  top: auto;
+  bottom: calc(100% + var(--rdp-space-2xs));
+}
+
+
+/* ── ITEMS ───────────────────────────────────────────────── */
+
+.rdp-dropdown__item {
+  display: flex;
+  align-items: center;
+  gap: var(--rdp-space-sm);
+  padding: var(--rdp-space-sm) var(--rdp-space-md);
+
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-small);
+  font-weight: 400;
+  color: var(--rdp-text);
+  text-decoration: none;
+  border-radius: var(--rdp-radius-md);
+  cursor: pointer;
+  transition: background-color var(--rdp-transition);
+}
+
+.rdp-dropdown__item:hover {
+  background-color: var(--rdp-bg-secondary);
+}
+
+.rdp-dropdown__item.active,
+.rdp-dropdown__item[aria-current] {
+  background-color: var(--rdp-primary-50);
+  color: var(--rdp-primary);
+  font-weight: 500;
+}
+
+.rdp-dropdown__item--danger {
+  color: var(--rdp-danger);
+}
+
+.rdp-dropdown__item--danger:hover {
+  background-color: var(--rdp-danger-50);
+}
+
+.rdp-dropdown__item--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.rdp-dropdown__item svg,
+.rdp-dropdown__item-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+
+/* ── HEADER & DIVIDER ────────────────────────────────────── */
+
+.rdp-dropdown__header {
+  padding: var(--rdp-space-xs) var(--rdp-space-md);
+  font-size: var(--rdp-size-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--rdp-text-muted);
+}
+
+.rdp-dropdown__divider {
+  border: none;
+  height: 1px;
+  background-color: var(--rdp-border-light);
+  margin: var(--rdp-space-2xs) 0;
+}
+
+
+/* ── ANIMATION ───────────────────────────────────────────── */
+
+@keyframes rdp-dropdown-show {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

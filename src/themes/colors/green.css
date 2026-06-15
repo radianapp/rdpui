@@ -1,0 +1,28 @@
+/**
+ * ============================================================
+ *  RDP-UI Theme — Green Palette Override
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Mengesampingkan warna brand utama (primary) menjadi Hijau.
+ *  Load file ini SETELAH rdp.css.
+ * ============================================================
+ */
+
+:root {
+  /* Primary — Green overrides */
+  --rdp-primary-50: #E8F5E9;
+  --rdp-primary-100: #C8E6C9;
+  --rdp-primary-200: #A5D6A7;
+  --rdp-primary-300: #81C784;
+  --rdp-primary-400: #66BB6A;
+  --rdp-primary-500: #4CAF50;
+  --rdp-primary-600: #43A047;
+  --rdp-primary-700: #388E3C;
+  --rdp-primary-800: #2E7D32;
+  --rdp-primary-900: #1B5E20;
+  --rdp-primary: var(--rdp-primary-600);
+
+  /* Override links & selections */
+  --rdp-text-link: var(--rdp-primary-700);
+  --rdp-text-link-hover: var(--rdp-primary-500);
+}

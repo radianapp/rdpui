@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contoh Blank Layout RDP-UI — Halaman login, register, dan error.">
+  <title>Blank Layout — RDP-UI Example</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.min.css">
+  <link rel="stylesheet" href="../src/rdp.css">
+  <script type="module" src="../src/rdp.js" defer></script>
+</head>
+<body class="rdp-layout-blank">
+
+  <main class="rdp-blank">
+    <div class="rdp-blank__card">
+      <!-- Logo -->
+      <div class="rdp-blank__logo">
+        <span class="rdp-display-sm" style="color: var(--rdp-primary);">RDP</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="rdp-blank__title">Masuk ke Akun</h1>
+      <p class="rdp-blank__subtitle">Silakan masuk untuk melanjutkan ke dashboard.</p>
+
+      <!-- Login Form -->
+      <form>
+        <label for="email">
+          Email
+          <input type="email" id="email" name="email" placeholder="nama@perusahaan.com" required>
+        </label>
+
+        <label for="password">
+          Password
+          <input type="password" id="password" name="password" placeholder="Masukkan password" required>
+        </label>
+
+        <div class="rdp-flex rdp-justify-between rdp-items-center rdp-mb-md" style="font-size: var(--rdp-size-small);">
+          <label style="margin: 0;">
+            <input type="checkbox" name="remember" role="switch"> Ingat saya
+          </label>
+          <a href="#" class="rdp-link">Lupa password?</a>
+        </div>
+
+        <button type="submit" class="rdp-btn rdp-btn--primary rdp-btn--block">Masuk</button>
+      </form>
+
+      <!-- Divider -->
+      <div class="rdp-blank__divider">atau</div>
+
+      <!-- Social Login -->
+      <button class="rdp-btn rdp-btn--block" style="margin-bottom: var(--rdp-space-sm);">
+        Masuk dengan Google
+      </button>
+
+      <!-- Footer -->
+      <div class="rdp-blank__footer">
+        Belum punya akun? <a href="#">Daftar sekarang</a>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

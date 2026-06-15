@@ -1,0 +1,172 @@
+/*
+ * ============================================================
+ *  RDP Tabs Component — v1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Komponen tab navigasi.
+ *  Menggunakan radio input hidden untuk state tanpa JS.
+ *
+ *  Markup (simple — JS required):
+ *    <nav class="rdp-tabs">
+ *      <button class="rdp-tabs__tab active">Tab 1</button>
+ *      <button class="rdp-tabs__tab">Tab 2</button>
+ *      <button class="rdp-tabs__tab">Tab 3</button>
+ *    </nav>
+ *    <div class="rdp-tabs__panel active">Content 1</div>
+ * ============================================================
+ */
+
+
+/* ── TAB LIST ────────────────────────────────────────────── */
+
+.rdp-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--rdp-border-light);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.rdp-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* ── TAB ITEM ────────────────────────────────────────────── */
+
+.rdp-tabs__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rdp-space-xs);
+  padding: var(--rdp-space-sm) var(--rdp-space-md);
+
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-small);
+  font-weight: 500;
+  color: var(--rdp-text-muted);
+  white-space: nowrap;
+  text-decoration: none;
+
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+
+  transition: color var(--rdp-transition), border-color var(--rdp-transition);
+}
+
+.rdp-tabs__tab:hover {
+  color: var(--rdp-text);
+  border-bottom-color: var(--rdp-border);
+}
+
+.rdp-tabs__tab.active,
+.rdp-tabs__tab[aria-selected="true"] {
+  color: var(--rdp-primary);
+  border-bottom-color: var(--rdp-primary);
+  font-weight: 600;
+}
+
+.rdp-tabs__tab:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Badge in tab */
+.rdp-tabs__tab .rdp-badge {
+  margin-left: var(--rdp-space-2xs);
+}
+
+
+/* ── TAB PANEL ───────────────────────────────────────────── */
+
+.rdp-tabs__panel {
+  display: none;
+  padding: var(--rdp-space-md) 0;
+}
+
+.rdp-tabs__panel.active,
+.rdp-tabs__panel[aria-hidden="false"] {
+  display: block;
+  animation: rdp-tab-fade var(--rdp-duration-normal) var(--rdp-easing-default);
+}
+
+
+/* ── VARIANTS ────────────────────────────────────────────── */
+
+/* Pill tabs */
+.rdp-tabs--pills {
+  border-bottom: none;
+  gap: var(--rdp-space-2xs);
+  background-color: var(--rdp-bg-secondary);
+  padding: var(--rdp-space-2xs);
+  border-radius: var(--rdp-radius-lg);
+}
+
+.rdp-tabs--pills .rdp-tabs__tab {
+  border-bottom: none;
+  margin-bottom: 0;
+  border-radius: var(--rdp-radius-md);
+  padding: var(--rdp-space-xs) var(--rdp-space-md);
+}
+
+.rdp-tabs--pills .rdp-tabs__tab.active,
+.rdp-tabs--pills .rdp-tabs__tab[aria-selected="true"] {
+  background-color: var(--rdp-surface);
+  box-shadow: var(--rdp-shadow-xs);
+  color: var(--rdp-text);
+}
+
+/* Boxed tabs */
+.rdp-tabs--boxed {
+  border-bottom: 1px solid var(--rdp-border);
+}
+
+.rdp-tabs--boxed .rdp-tabs__tab {
+  border: 1px solid transparent;
+  border-bottom: none;
+  margin-bottom: -1px;
+  border-radius: var(--rdp-radius-md) var(--rdp-radius-md) 0 0;
+}
+
+.rdp-tabs--boxed .rdp-tabs__tab.active,
+.rdp-tabs--boxed .rdp-tabs__tab[aria-selected="true"] {
+  border-color: var(--rdp-border);
+  background-color: var(--rdp-surface);
+  color: var(--rdp-text);
+}
+
+/* Vertical tabs */
+.rdp-tabs--vertical {
+  flex-direction: column;
+  border-bottom: none;
+  border-right: 2px solid var(--rdp-border-light);
+}
+
+.rdp-tabs--vertical .rdp-tabs__tab {
+  border-bottom: none;
+  border-right: 2px solid transparent;
+  margin-bottom: 0;
+  margin-right: -2px;
+  text-align: left;
+}
+
+.rdp-tabs--vertical .rdp-tabs__tab.active,
+.rdp-tabs--vertical .rdp-tabs__tab[aria-selected="true"] {
+  border-right-color: var(--rdp-primary);
+}
+
+
+/* ── ANIMATION ───────────────────────────────────────────── */
+
+@keyframes rdp-tab-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,1017 @@
+/*
+ * ============================================================
+ *  RDP Utilities — v1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Utility classes ringan untuk layout, spacing, text, dan
+ *  visibility. Mobile first — breakpoint ascending.
+ *
+ *  Namespace: .rdp-
+ *  Breakpoints:
+ *    (base) = mobile (< 768px)
+ *    md:    = tablet (>= 768px)
+ *    lg:    = desktop (>= 1024px)
+ *    xl:    = large desktop (>= 1280px)
+ * ============================================================
+ */
+
+
+/* ═══════════════════════════════════════════════════════════
+   LAYOUT UTILITIES
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Container ───────────────────────────────────────────── */
+
+.rdp-container {
+  width: 100%;
+  max-width: var(--rdp-container-max);
+  margin-inline: auto;
+  padding-inline: var(--rdp-space-md);
+}
+
+.rdp-container-sm {
+  max-width: var(--rdp-container-sm);
+}
+
+.rdp-container-md {
+  max-width: var(--rdp-container-md);
+}
+
+.rdp-container-lg {
+  max-width: var(--rdp-container-lg);
+}
+
+.rdp-container-xl {
+  max-width: var(--rdp-container-xl);
+}
+
+@media (min-width: 768px) {
+  .rdp-container {
+    padding-inline: var(--rdp-space-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .rdp-container {
+    padding-inline: var(--rdp-space-xl);
+  }
+}
+
+
+/* ── Flexbox ─────────────────────────────────────────────── */
+
+.rdp-flex {
+  display: flex;
+}
+
+.rdp-inline-flex {
+  display: inline-flex;
+}
+
+.rdp-flex-col {
+  flex-direction: column;
+}
+
+.rdp-flex-row {
+  flex-direction: row;
+}
+
+.rdp-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.rdp-flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.rdp-flex-1 {
+  flex: 1 1 0%;
+}
+
+.rdp-flex-auto {
+  flex: 1 1 auto;
+}
+
+.rdp-flex-none {
+  flex: none;
+}
+
+.rdp-flex-grow {
+  flex-grow: 1;
+}
+
+.rdp-flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+/* Justify */
+.rdp-justify-start {
+  justify-content: flex-start;
+}
+
+.rdp-justify-center {
+  justify-content: center;
+}
+
+.rdp-justify-end {
+  justify-content: flex-end;
+}
+
+.rdp-justify-between {
+  justify-content: space-between;
+}
+
+.rdp-justify-around {
+  justify-content: space-around;
+}
+
+.rdp-justify-evenly {
+  justify-content: space-evenly;
+}
+
+/* Align */
+.rdp-items-start {
+  align-items: flex-start;
+}
+
+.rdp-items-center {
+  align-items: center;
+}
+
+.rdp-items-end {
+  align-items: flex-end;
+}
+
+.rdp-items-stretch {
+  align-items: stretch;
+}
+
+.rdp-items-baseline {
+  align-items: baseline;
+}
+
+.rdp-self-start {
+  align-self: flex-start;
+}
+
+.rdp-self-center {
+  align-self: center;
+}
+
+.rdp-self-end {
+  align-self: flex-end;
+}
+
+.rdp-self-stretch {
+  align-self: stretch;
+}
+
+
+/* ── Grid ────────────────────────────────────────────────── */
+
+.rdp-grid {
+  display: grid;
+  gap: var(--rdp-space-md);
+}
+
+.rdp-grid-1 {
+  grid-template-columns: 1fr;
+}
+
+.rdp-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.rdp-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.rdp-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Responsive grid — mobile: 1 col, tablet: 2, desktop: 3+ */
+.rdp-grid-responsive {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .rdp-grid-responsive {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rdp-md\:grid-1 {
+    grid-template-columns: 1fr;
+  }
+
+  .rdp-md\:grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rdp-md\:grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .rdp-md\:grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .rdp-grid-responsive {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .rdp-lg\:grid-1 {
+    grid-template-columns: 1fr;
+  }
+
+  .rdp-lg\:grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rdp-lg\:grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .rdp-lg\:grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+/* ── Stack (vertical spacing) ────────────────────────────── */
+
+.rdp-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.rdp-stack>*+* {
+  margin-top: var(--rdp-space-md);
+}
+
+.rdp-stack-sm>*+* {
+  margin-top: var(--rdp-space-sm);
+}
+
+.rdp-stack-lg>*+* {
+  margin-top: var(--rdp-space-lg);
+}
+
+.rdp-stack-xl>*+* {
+  margin-top: var(--rdp-space-xl);
+}
+
+
+/* ── Cluster (horizontal spacing with wrapping) ──────────── */
+
+.rdp-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--rdp-space-sm);
+  align-items: center;
+}
+
+.rdp-cluster-md {
+  gap: var(--rdp-space-md);
+}
+
+.rdp-cluster-lg {
+  gap: var(--rdp-space-lg);
+}
+
+
+/* ── Gap ─────────────────────────────────────────────────── */
+
+.rdp-gap-xs {
+  gap: var(--rdp-space-xs);
+}
+
+.rdp-gap-sm {
+  gap: var(--rdp-space-sm);
+}
+
+.rdp-gap-md {
+  gap: var(--rdp-space-md);
+}
+
+.rdp-gap-lg {
+  gap: var(--rdp-space-lg);
+}
+
+.rdp-gap-xl {
+  gap: var(--rdp-space-xl);
+}
+
+.rdp-gap-2xl {
+  gap: var(--rdp-space-2xl);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   SPACING UTILITIES
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Margin ──────────────────────────────────────────────── */
+
+.rdp-m-0 {
+  margin: 0;
+}
+
+.rdp-m-xs {
+  margin: var(--rdp-space-xs);
+}
+
+.rdp-m-sm {
+  margin: var(--rdp-space-sm);
+}
+
+.rdp-m-md {
+  margin: var(--rdp-space-md);
+}
+
+.rdp-m-lg {
+  margin: var(--rdp-space-lg);
+}
+
+.rdp-m-xl {
+  margin: var(--rdp-space-xl);
+}
+
+.rdp-m-auto {
+  margin: auto;
+}
+
+.rdp-mt-0 {
+  margin-top: 0;
+}
+
+.rdp-mt-xs {
+  margin-top: var(--rdp-space-xs);
+}
+
+.rdp-mt-sm {
+  margin-top: var(--rdp-space-sm);
+}
+
+.rdp-mt-md {
+  margin-top: var(--rdp-space-md);
+}
+
+.rdp-mt-lg {
+  margin-top: var(--rdp-space-lg);
+}
+
+.rdp-mt-xl {
+  margin-top: var(--rdp-space-xl);
+}
+
+.rdp-mt-2xl {
+  margin-top: var(--rdp-space-2xl);
+}
+
+.rdp-mb-0 {
+  margin-bottom: 0;
+}
+
+.rdp-mb-xs {
+  margin-bottom: var(--rdp-space-xs);
+}
+
+.rdp-mb-sm {
+  margin-bottom: var(--rdp-space-sm);
+}
+
+.rdp-mb-md {
+  margin-bottom: var(--rdp-space-md);
+}
+
+.rdp-mb-lg {
+  margin-bottom: var(--rdp-space-lg);
+}
+
+.rdp-mb-xl {
+  margin-bottom: var(--rdp-space-xl);
+}
+
+.rdp-mb-2xl {
+  margin-bottom: var(--rdp-space-2xl);
+}
+
+.rdp-mx-auto {
+  margin-inline: auto;
+}
+
+.rdp-my-0 {
+  margin-block: 0;
+}
+
+.rdp-my-sm {
+  margin-block: var(--rdp-space-sm);
+}
+
+.rdp-my-md {
+  margin-block: var(--rdp-space-md);
+}
+
+.rdp-my-lg {
+  margin-block: var(--rdp-space-lg);
+}
+
+/* ── Padding ─────────────────────────────────────────────── */
+
+.rdp-p-0 {
+  padding: 0;
+}
+
+.rdp-p-xs {
+  padding: var(--rdp-space-xs);
+}
+
+.rdp-p-sm {
+  padding: var(--rdp-space-sm);
+}
+
+.rdp-p-md {
+  padding: var(--rdp-space-md);
+}
+
+.rdp-p-lg {
+  padding: var(--rdp-space-lg);
+}
+
+.rdp-p-xl {
+  padding: var(--rdp-space-xl);
+}
+
+.rdp-p-2xl {
+  padding: var(--rdp-space-2xl);
+}
+
+.rdp-px-0 {
+  padding-inline: 0;
+}
+
+.rdp-px-sm {
+  padding-inline: var(--rdp-space-sm);
+}
+
+.rdp-px-md {
+  padding-inline: var(--rdp-space-md);
+}
+
+.rdp-px-lg {
+  padding-inline: var(--rdp-space-lg);
+}
+
+.rdp-px-xl {
+  padding-inline: var(--rdp-space-xl);
+}
+
+.rdp-py-0 {
+  padding-block: 0;
+}
+
+.rdp-py-sm {
+  padding-block: var(--rdp-space-sm);
+}
+
+.rdp-py-md {
+  padding-block: var(--rdp-space-md);
+}
+
+.rdp-py-lg {
+  padding-block: var(--rdp-space-lg);
+}
+
+.rdp-py-xl {
+  padding-block: var(--rdp-space-xl);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   TEXT UTILITIES
+   ═══════════════════════════════════════════════════════════ */
+
+.rdp-text-left {
+  text-align: left;
+}
+
+.rdp-text-center {
+  text-align: center;
+}
+
+.rdp-text-right {
+  text-align: right;
+}
+
+.rdp-text-justify {
+  text-align: justify;
+}
+
+.rdp-text-xs {
+  font-size: var(--rdp-size-micro);
+}
+
+.rdp-text-sm {
+  font-size: var(--rdp-size-small);
+}
+
+.rdp-text-base {
+  font-size: var(--rdp-size-body);
+}
+
+.rdp-text-lg {
+  font-size: var(--rdp-size-body-lg);
+}
+
+.rdp-font-light {
+  font-weight: 300;
+}
+
+.rdp-font-normal {
+  font-weight: 400;
+}
+
+.rdp-font-medium {
+  font-weight: 500;
+}
+
+.rdp-font-semibold {
+  font-weight: 600;
+}
+
+.rdp-font-bold {
+  font-weight: 700;
+}
+
+.rdp-uppercase {
+  text-transform: uppercase;
+}
+
+.rdp-lowercase {
+  text-transform: lowercase;
+}
+
+.rdp-capitalize {
+  text-transform: capitalize;
+}
+
+.rdp-normal-case {
+  text-transform: none;
+}
+
+.rdp-italic {
+  font-style: italic;
+}
+
+.rdp-not-italic {
+  font-style: normal;
+}
+
+.rdp-underline {
+  text-decoration: underline;
+}
+
+.rdp-line-through {
+  text-decoration: line-through;
+}
+
+.rdp-no-underline {
+  text-decoration: none;
+}
+
+.rdp-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rdp-line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.rdp-line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Text colors */
+.rdp-text-primary {
+  color: var(--rdp-primary);
+}
+
+.rdp-text-secondary {
+  color: var(--rdp-secondary);
+}
+
+.rdp-text-accent {
+  color: var(--rdp-accent);
+}
+
+.rdp-text-success {
+  color: var(--rdp-success);
+}
+
+.rdp-text-warning {
+  color: var(--rdp-warning);
+}
+
+.rdp-text-danger {
+  color: var(--rdp-danger);
+}
+
+.rdp-text-info {
+  color: var(--rdp-info);
+}
+
+.rdp-text-muted {
+  color: var(--rdp-text-muted);
+}
+
+.rdp-text-inverse {
+  color: var(--rdp-text-inverse);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   BACKGROUND UTILITIES
+   ═══════════════════════════════════════════════════════════ */
+
+.rdp-bg-primary {
+  background-color: var(--rdp-primary);
+  color: var(--rdp-text-inverse);
+}
+
+.rdp-bg-secondary {
+  background-color: var(--rdp-secondary);
+  color: var(--rdp-text-inverse);
+}
+
+.rdp-bg-accent {
+  background-color: var(--rdp-accent);
+  color: var(--rdp-text-inverse);
+}
+
+.rdp-bg-cream {
+  background-color: var(--rdp-cream);
+}
+
+.rdp-bg-surface {
+  background-color: var(--rdp-surface);
+}
+
+.rdp-bg-muted {
+  background-color: var(--rdp-bg-secondary);
+}
+
+.rdp-bg-success {
+  background-color: var(--rdp-success-50);
+  color: var(--rdp-success-800);
+}
+
+.rdp-bg-warning {
+  background-color: var(--rdp-warning-50);
+  color: var(--rdp-warning-900);
+}
+
+.rdp-bg-danger {
+  background-color: var(--rdp-danger-50);
+  color: var(--rdp-danger-800);
+}
+
+.rdp-bg-info {
+  background-color: var(--rdp-info-50);
+  color: var(--rdp-info-800);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   BORDER UTILITIES
+   ═══════════════════════════════════════════════════════════ */
+
+.rdp-border {
+  border: 1px solid var(--rdp-border);
+}
+
+.rdp-border-0 {
+  border: none;
+}
+
+.rdp-border-t {
+  border-top: 1px solid var(--rdp-border);
+}
+
+.rdp-border-b {
+  border-bottom: 1px solid var(--rdp-border);
+}
+
+.rdp-border-l {
+  border-left: 1px solid var(--rdp-border);
+}
+
+.rdp-border-r {
+  border-right: 1px solid var(--rdp-border);
+}
+
+.rdp-rounded-none {
+  border-radius: 0;
+}
+
+.rdp-rounded-sm {
+  border-radius: var(--rdp-radius-sm);
+}
+
+.rdp-rounded-md {
+  border-radius: var(--rdp-radius-md);
+}
+
+.rdp-rounded-lg {
+  border-radius: var(--rdp-radius-lg);
+}
+
+.rdp-rounded-xl {
+  border-radius: var(--rdp-radius-xl);
+}
+
+.rdp-rounded-pill {
+  border-radius: var(--rdp-radius-pill);
+}
+
+.rdp-rounded-full {
+  border-radius: var(--rdp-radius-circle);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   SHADOW UTILITIES
+   ═══════════════════════════════════════════════════════════ */
+
+.rdp-shadow-none {
+  box-shadow: none;
+}
+
+.rdp-shadow-xs {
+  box-shadow: var(--rdp-shadow-xs);
+}
+
+.rdp-shadow-sm {
+  box-shadow: var(--rdp-shadow-sm);
+}
+
+.rdp-shadow-md {
+  box-shadow: var(--rdp-shadow-md);
+}
+
+.rdp-shadow-lg {
+  box-shadow: var(--rdp-shadow-lg);
+}
+
+.rdp-shadow-xl {
+  box-shadow: var(--rdp-shadow-xl);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   VISIBILITY & DISPLAY
+   ═══════════════════════════════════════════════════════════ */
+
+.rdp-block {
+  display: block;
+}
+
+.rdp-inline-block {
+  display: inline-block;
+}
+
+.rdp-inline {
+  display: inline;
+}
+
+.rdp-hidden {
+  display: none;
+}
+
+.rdp-invisible {
+  visibility: hidden;
+}
+
+.rdp-visible {
+  visibility: visible;
+}
+
+.rdp-opacity-0 {
+  opacity: 0;
+}
+
+.rdp-opacity-50 {
+  opacity: 0.5;
+}
+
+.rdp-opacity-100 {
+  opacity: 1;
+}
+
+/* Screen reader only — visible to assistive tech, hidden visually */
+.rdp-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Responsive visibility */
+@media (max-width: 767.98px) {
+  .rdp-hidden-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .rdp-hidden-tablet {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rdp-hidden-desktop {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .rdp-show-mobile {
+    display: block !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .rdp-show-tablet {
+    display: block !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rdp-show-desktop {
+    display: block !important;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   POSITION UTILITIES
+   ═══════════════════════════════════════════════════════════ */
+
+.rdp-relative {
+  position: relative;
+}
+
+.rdp-absolute {
+  position: absolute;
+}
+
+.rdp-fixed {
+  position: fixed;
+}
+
+.rdp-sticky {
+  position: sticky;
+  top: 0;
+}
+
+.rdp-inset-0 {
+  inset: 0;
+}
+
+.rdp-top-0 {
+  top: 0;
+}
+
+.rdp-right-0 {
+  right: 0;
+}
+
+.rdp-bottom-0 {
+  bottom: 0;
+}
+
+.rdp-left-0 {
+  left: 0;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   SIZING UTILITIES
+   ═══════════════════════════════════════════════════════════ */
+
+.rdp-w-full {
+  width: 100%;
+}
+
+.rdp-w-auto {
+  width: auto;
+}
+
+.rdp-h-full {
+  height: 100%;
+}
+
+.rdp-h-screen {
+  height: 100vh;
+  height: 100dvh;
+}
+
+.rdp-min-h-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.rdp-overflow-hidden {
+  overflow: hidden;
+}
+
+.rdp-overflow-auto {
+  overflow: auto;
+}
+
+.rdp-overflow-x-auto {
+  overflow-x: auto;
+}
+
+.rdp-overflow-y-auto {
+  overflow-y: auto;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   INTERACTION UTILITIES
+   ═══════════════════════════════════════════════════════════ */
+
+.rdp-cursor-pointer {
+  cursor: pointer;
+}
+
+.rdp-cursor-default {
+  cursor: default;
+}
+
+.rdp-cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+.rdp-pointer-events-none {
+  pointer-events: none;
+}
+
+.rdp-select-none {
+  user-select: none;
+}
+
+.rdp-select-all {
+  user-select: all;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   DIVIDER
+   ═══════════════════════════════════════════════════════════ */
+
+.rdp-divider {
+  border: none;
+  border-top: 1px solid var(--rdp-border);
+  margin-block: var(--rdp-space-md);
+}
+
+.rdp-divider-lg {
+  margin-block: var(--rdp-space-lg);
+}
+
+
+/* ── EXTRA COLOR UTILITIES ───────────────────────────────── */
+
+.rdp-text-amber { color: var(--rdp-amber) !important; }
+.rdp-text-purple { color: var(--rdp-purple) !important; }
+.rdp-text-coral { color: var(--rdp-coral) !important; }
+
+.rdp-bg-amber { background-color: var(--rdp-amber) !important; color: #000000 !important; }
+.rdp-bg-purple { background-color: var(--rdp-purple) !important; color: #FFFFFF !important; }
+.rdp-bg-coral { background-color: var(--rdp-coral) !important; color: #FFFFFF !important; }
+
+.rdp-bg-amber-soft { background-color: var(--rdp-amber-50) !important; color: var(--rdp-amber-900) !important; }
+.rdp-bg-purple-soft { background-color: var(--rdp-purple-50) !important; color: var(--rdp-purple-900) !important; }
+.rdp-bg-coral-soft { background-color: var(--rdp-coral-50) !important; color: var(--rdp-coral-900) !important; }
+
+.rdp-border-amber { border-color: var(--rdp-amber) !important; }
+.rdp-border-purple { border-color: var(--rdp-purple) !important; }
+.rdp-border-coral { border-color: var(--rdp-coral) !important; }

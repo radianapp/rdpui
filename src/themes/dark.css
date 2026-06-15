@@ -1,0 +1,111 @@
+/*
+ * ============================================================
+ *  RDP Dark Theme — v1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Dark mode theme. WCAG 2.2 AA compliant contrast ratios.
+ *  Diaktifkan via: <html data-theme="dark">
+ * ============================================================
+ */
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Surface — tiered dark backgrounds */
+  --rdp-bg: #0F1419;
+  --rdp-bg-secondary: #1A1F26;
+  --rdp-bg-tertiary: #242A33;
+  --rdp-surface: #1A1F26;
+  --rdp-surface-raised: #242A33;
+  --rdp-surface-overlay: #2E3640;
+
+  /* Border */
+  --rdp-border: #343B44;
+  --rdp-border-light: #2E3640;
+  --rdp-border-strong: #4A5568;
+
+  /* Text — WCAG AA compliant pada dark background */
+  --rdp-text: #E8ECF0;
+  --rdp-text-secondary: #B0B8C4;
+  --rdp-text-muted: #7A8694;
+  --rdp-text-inverse: #0F1419;
+  --rdp-text-link: #7EB3E0;
+  --rdp-text-link-hover: #A8CEF0;
+
+  /* Brand colors — lightened for dark bg contrast */
+  --rdp-primary: #4A7AB5;
+  --rdp-primary-50: #1A2A3E;
+  --rdp-primary-100: #1E3450;
+  --rdp-primary-200: #264068;
+  --rdp-primary-300: #335580;
+  --rdp-primary-400: #3F6A9A;
+  --rdp-primary-500: #4A7AB5;
+  --rdp-primary-600: #5E8CC4;
+  --rdp-primary-700: #7EB3E0;
+  --rdp-primary-800: #A0CBE8;
+  --rdp-primary-900: #C8E0F4;
+
+  --rdp-secondary: #D9A257;
+  --rdp-accent: #3DAD8A;
+
+  /* Semantic — adjusted for dark readability */
+  --rdp-success: #5CB85C;
+  --rdp-success-50: #1A2E1A;
+  --rdp-success-800: #A5D6A5;
+
+  --rdp-warning: #F0AD4E;
+  --rdp-warning-50: #2E2510;
+  --rdp-warning-900: #FFE082;
+
+  --rdp-danger: #E55353;
+  --rdp-danger-50: #2E1518;
+  --rdp-danger-800: #F5A0A0;
+
+  --rdp-info: #5BC0DE;
+  --rdp-info-50: #152530;
+  --rdp-info-800: #A0D8EF;
+
+  /* Cream — dark equivalent */
+  --rdp-cream: #1A1F26;
+  --rdp-cream-dark: #151A20;
+
+  /* Shadows — stronger on dark */
+  --rdp-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --rdp-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.35), 0 1px 2px -1px rgba(0, 0, 0, 0.3);
+  --rdp-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.35), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --rdp-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.35), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  --rdp-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.35), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  --rdp-shadow-floating: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --rdp-shadow-modal: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+
+  /* PicoCSS overrides for dark */
+  --pico-background-color: var(--rdp-bg);
+  --pico-color: var(--rdp-text);
+  --pico-muted-color: var(--rdp-text-muted);
+  --pico-muted-border-color: var(--rdp-border);
+
+  --pico-primary: var(--rdp-primary);
+  --pico-primary-hover: var(--rdp-primary-600);
+  --pico-primary-inverse: var(--rdp-text-inverse);
+  --pico-primary-background: var(--rdp-primary);
+  --pico-primary-background-hover: var(--rdp-primary-600);
+
+  --pico-secondary: var(--rdp-secondary);
+
+  --pico-card-background-color: var(--rdp-surface);
+  --pico-card-border-color: var(--rdp-border);
+  --pico-card-box-shadow: var(--rdp-shadow-sm);
+
+  --pico-form-element-background-color: var(--rdp-surface);
+  --pico-form-element-border-color: var(--rdp-border);
+  --pico-form-element-focus-color: var(--rdp-primary);
+
+  --pico-table-border-color: var(--rdp-border);
+  --pico-table-row-stripped-background-color: var(--rdp-bg-secondary);
+
+  --pico-code-background-color: var(--rdp-bg-tertiary);
+  --pico-code-color: #F0A5A0;
+
+  --pico-blockquote-border-color: var(--rdp-secondary);
+  --pico-blockquote-footer-color: var(--rdp-text-muted);
+}

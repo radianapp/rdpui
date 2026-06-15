@@ -1,0 +1,174 @@
+/*
+ * ============================================================
+ *  RDP Modal Component — v1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Modal dialog menggunakan <dialog> HTML native.
+ *  Kompatibel dengan HTMX.
+ *
+ *  Markup:
+ *    <dialog class="rdp-modal" id="my-modal">
+ *      <div class="rdp-modal__content">
+ *        <header class="rdp-modal__header">
+ *          <h3 class="rdp-modal__title">Judul</h3>
+ *          <button class="rdp-modal__close">&times;</button>
+ *        </header>
+ *        <div class="rdp-modal__body">Konten</div>
+ *        <footer class="rdp-modal__footer">
+ *          <button class="rdp-btn">Batal</button>
+ *          <button class="rdp-btn rdp-btn--primary">OK</button>
+ *        </footer>
+ *      </div>
+ *    </dialog>
+ * ============================================================
+ */
+
+
+/* ── BACKDROP ────────────────────────────────────────────── */
+
+.rdp-modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+
+/* ── DIALOG BASE ─────────────────────────────────────────── */
+
+.rdp-modal {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: visible;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.rdp-modal[open] {
+  display: flex;
+  animation: rdp-modal-show var(--rdp-duration-slow) var(--rdp-easing-default);
+}
+
+
+/* ── CONTENT WRAPPER ─────────────────────────────────────── */
+
+.rdp-modal__content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: min(90vw, 480px) !important;
+  margin: auto !important;
+  max-height: min(90vh, 720px);
+  background-color: var(--rdp-surface);
+  border-radius: var(--rdp-radius-xl);
+  box-shadow: var(--rdp-shadow-modal);
+  overflow: hidden;
+}
+
+
+/* ── HEADER ──────────────────────────────────────────────── */
+
+.rdp-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--rdp-space-md) var(--rdp-space-lg);
+  border-bottom: 1px solid var(--rdp-border-light);
+  flex-shrink: 0;
+}
+
+.rdp-modal__title {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-h3);
+  font-weight: 600;
+  margin: 0;
+  color: var(--rdp-text);
+}
+
+.rdp-modal__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  border-radius: var(--rdp-radius-md);
+  color: var(--rdp-text-muted);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background-color var(--rdp-transition), color var(--rdp-transition);
+}
+
+.rdp-modal__close:hover {
+  background-color: var(--rdp-bg-secondary);
+  color: var(--rdp-text);
+}
+
+
+/* ── BODY ────────────────────────────────────────────────── */
+
+.rdp-modal__body {
+  padding: var(--rdp-space-lg);
+  overflow-y: auto;
+  flex: 1;
+}
+
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+
+.rdp-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--rdp-space-sm);
+  padding: var(--rdp-space-md) var(--rdp-space-lg);
+  border-top: 1px solid var(--rdp-border-light);
+  flex-shrink: 0;
+}
+
+
+/* ── SIZE VARIANTS ───────────────────────────────────────── */
+
+.rdp-modal--sm .rdp-modal__content {
+  max-width: min(90vw, 400px) !important;
+}
+
+.rdp-modal--lg .rdp-modal__content {
+  max-width: min(90vw, 720px) !important;
+}
+
+.rdp-modal--xl .rdp-modal__content {
+  max-width: min(90vw, 960px) !important;
+}
+
+.rdp-modal--fullscreen .rdp-modal__content {
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  border-radius: 0;
+}
+
+
+/* ── ANIMATION ───────────────────────────────────────────── */
+
+@keyframes rdp-modal-show {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

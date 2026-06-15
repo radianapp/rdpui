@@ -1,0 +1,76 @@
+/*
+ * ============================================================
+ *  RDP Breadcrumb Component — v1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Breadcrumb navigasi. Sudah ada versi basic di dashboard.css,
+ *  file ini menyediakan komponen standalone.
+ *
+ *  Markup:
+ *    <nav class="rdp-breadcrumb" aria-label="Breadcrumb">
+ *      <ol>
+ *        <li><a href="#">Beranda</a></li>
+ *        <li><a href="#">Proyek</a></li>
+ *        <li aria-current="page">Detail</li>
+ *      </ol>
+ *    </nav>
+ * ============================================================
+ */
+
+
+/* ── BASE ────────────────────────────────────────────────── */
+
+.rdp-breadcrumb ol,
+.rdp-breadcrumb ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--rdp-space-2xs);
+
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-caption);
+  color: var(--rdp-text-muted);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ── SEPARATOR ───────────────────────────────────────────── */
+
+.rdp-breadcrumb li+li::before {
+  content: "/";
+  margin-right: var(--rdp-space-2xs);
+  color: var(--rdp-border-strong);
+}
+
+.rdp-breadcrumb--arrow li+li::before {
+  content: "›";
+}
+
+.rdp-breadcrumb--dot li+li::before {
+  content: "·";
+}
+
+
+/* ── LINKS ───────────────────────────────────────────────── */
+
+.rdp-breadcrumb a {
+  color: var(--rdp-text-muted);
+  text-decoration: none;
+  transition: color var(--rdp-transition);
+}
+
+.rdp-breadcrumb a:hover {
+  color: var(--rdp-text-link);
+  text-decoration: underline;
+}
+
+
+/* ── CURRENT PAGE ────────────────────────────────────────── */
+
+.rdp-breadcrumb li:last-child,
+.rdp-breadcrumb [aria-current="page"] {
+  color: var(--rdp-text);
+  font-weight: 500;
+}

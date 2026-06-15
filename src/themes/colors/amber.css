@@ -1,0 +1,28 @@
+/**
+ * ============================================================
+ *  RDP-UI Theme — Amber Palette Override
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Mengesampingkan warna brand utama (primary) menjadi Amber.
+ *  Load file ini SETELAH rdp.css.
+ * ============================================================
+ */
+
+:root {
+  /* Primary — Amber overrides */
+  --rdp-primary-50: #FFF8E1;
+  --rdp-primary-100: #FFECB3;
+  --rdp-primary-200: #FFE082;
+  --rdp-primary-300: #FFD54F;
+  --rdp-primary-400: #FFCA28;
+  --rdp-primary-500: #FFC107;
+  --rdp-primary-600: #FFB300;
+  --rdp-primary-700: #FFA000;
+  --rdp-primary-800: #FF8F00;
+  --rdp-primary-900: #FF6F00;
+  --rdp-primary: var(--rdp-primary-600);
+
+  /* Override links & selections */
+  --rdp-text-link: var(--rdp-primary-700);
+  --rdp-text-link-hover: var(--rdp-primary-500);
+}

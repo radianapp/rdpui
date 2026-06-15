@@ -1,0 +1,229 @@
+:root {
+  --accent: var(--rdp-accent);
+}
+
+/* ===================================================
+   SIZES
+   =================================================== */
+
+.ai-loader{
+    position:relative;
+    display:inline-block;
+}
+
+.ai-loader--sm{
+    width:20px;
+    height:20px;
+}
+
+.ai-loader--md{
+    width:32px;
+    height:32px;
+}
+
+.ai-loader--lg{
+    width:40px;
+    height:40px;
+}
+
+.ai-loader--xl{
+    width:48px;
+    height:48px;
+}
+
+.ai-loader--2xl{
+    width:64px;
+    height:64px;
+}
+
+/* ===================================================
+   CORE
+   =================================================== */
+
+.core{
+    position:absolute;
+
+    width:16%;
+    height:16%;
+
+    left:42%;
+    top:42%;
+
+    border-radius:50%;
+
+    background:var(--accent);
+
+    animation:core-breathe 2s ease-in-out infinite;
+}
+
+@keyframes core-breathe{
+
+    0%,100%{
+        transform:scale(.8);
+        opacity:.5;
+    }
+
+    50%{
+        transform:scale(1.4);
+        opacity:1;
+    }
+}
+
+/* ===================================================
+   RAYS
+   =================================================== */
+
+.ray{
+    position:absolute;
+
+    width:4%;
+    height:28%;
+
+    left:48%;
+    top:22%;
+
+    border-radius:999px;
+
+    background:var(--accent);
+
+    transform-origin:center 100%;
+
+    animation:ray-pulse 1.8s ease-in-out infinite;
+}
+
+.ray-1{ transform:rotate(0deg); }
+.ray-2{ transform:rotate(45deg); }
+.ray-3{ transform:rotate(90deg); }
+.ray-4{ transform:rotate(135deg); }
+.ray-5{ transform:rotate(180deg); }
+.ray-6{ transform:rotate(225deg); }
+.ray-7{ transform:rotate(270deg); }
+.ray-8{ transform:rotate(315deg); }
+
+.ray-1{animation-delay:0s;}
+.ray-2{animation-delay:.15s;}
+.ray-3{animation-delay:.3s;}
+.ray-4{animation-delay:.45s;}
+.ray-5{animation-delay:.6s;}
+.ray-6{animation-delay:.75s;}
+.ray-7{animation-delay:.9s;}
+.ray-8{animation-delay:1.05s;}
+
+@keyframes ray-pulse{
+
+    0%,100%{
+        opacity:.15;
+        scale:.7;
+    }
+
+    50%{
+        opacity:1;
+        scale:1.25;
+    }
+}
+
+/* ===================================================
+   OUTWARD PARTICLES
+   =================================================== */
+
+.particle{
+    position:absolute;
+
+    width:8%;
+    height:8%;
+
+    left:46%;
+    top:46%;
+
+    border-radius:50%;
+
+    background:var(--accent);
+
+    opacity:0;
+
+    animation:flow-out 2.4s linear infinite;
+}
+
+.p1{
+    --dx:0;
+    --dy:-18px;
+    animation-delay:0s;
+}
+
+.p2{
+    --dx:13px;
+    --dy:-13px;
+    animation-delay:.3s;
+}
+
+.p3{
+    --dx:18px;
+    --dy:0;
+    animation-delay:.6s;
+}
+
+.p4{
+    --dx:13px;
+    --dy:13px;
+    animation-delay:.9s;
+}
+
+.p5{
+    --dx:0;
+    --dy:18px;
+    animation-delay:1.2s;
+}
+
+.p6{
+    --dx:-13px;
+    --dy:13px;
+    animation-delay:1.5s;
+}
+
+.p7{
+    --dx:-18px;
+    --dy:0;
+    animation-delay:1.8s;
+}
+
+.p8{
+    --dx:-13px;
+    --dy:-13px;
+    animation-delay:2.1s;
+}
+
+@keyframes flow-out{
+
+    0%{
+        opacity:0;
+        transform:
+            translate(0,0)
+            scale(.2);
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+            translate(var(--dx),var(--dy))
+            scale(1);
+    }
+}
+
+/* ===================================================
+   PAUSE STATE
+   =================================================== */
+
+.paused{
+    animation-play-state: paused !important;
+}
+
+.paused .core,
+.paused .ray,
+.paused .particle{
+    animation-play-state: paused !important;
+}

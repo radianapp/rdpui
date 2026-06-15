@@ -1,0 +1,288 @@
+/*
+ * ============================================================
+ *  RDP Typography — v1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Sistem tipografi RDP-UI menggunakan font tunggal RDP Sans
+ *  untuk seluruh elemen (headings, body, UI).
+ *    - RDP Sans   (Plus Jakarta Sans) → Semua teks
+ *    - RDP Mono   (JetBrains Mono fallback) → Code, data
+ *
+ *  Mobile first: base font 16px (1rem), scale up di desktop.
+ * ============================================================
+ */
+
+
+/* ── IMPORT FONT DEFINITIONS ────────────────────────────── */
+
+@import url('../fonts/rdp-font/rdp-font.css');
+
+
+/* ── FONT FAMILY VARIABLES ──────────────────────────────── */
+
+:root {
+  --rdp-serif: 'RDP Serif', Georgia, 'Times New Roman', serif;
+  --rdp-sans: 'RDP Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --rdp-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+
+  /* Typographic scale — mobile base */
+  --rdp-size-display: clamp(2.25rem, 5vw, 3.5rem);
+  --rdp-size-h1: clamp(1.75rem, 3.5vw, 2.5rem);
+  --rdp-size-h2: clamp(1.375rem, 2.5vw, 1.875rem);
+  --rdp-size-h3: clamp(1.125rem, 2vw, 1.5rem);
+  --rdp-size-h4: clamp(1rem, 1.5vw, 1.25rem);
+  --rdp-size-h5: 1rem;
+  --rdp-size-h6: 0.875rem;
+  --rdp-size-body: 1rem;
+  --rdp-size-body-lg: 1.125rem;
+  --rdp-size-small: 0.875rem;
+  --rdp-size-caption: 0.75rem;
+  --rdp-size-micro: 0.6875rem;
+
+  /* Line heights */
+  --rdp-leading-tight: 1.2;
+  --rdp-leading-snug: 1.375;
+  --rdp-leading-normal: 1.5;
+  --rdp-leading-relaxed: 1.7;
+  --rdp-leading-loose: 2;
+}
+
+
+/* ── BASE TYPOGRAPHY ────────────────────────────────────── */
+
+body {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-body);
+  font-weight: 400;
+  line-height: var(--rdp-leading-relaxed);
+  color: var(--rdp-text);
+}
+
+
+/* ── HEADINGS ────────────────────────────────────────────── */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.rdp-h1,
+.rdp-h2,
+.rdp-h3,
+.rdp-h4,
+.rdp-h5,
+.rdp-h6 {
+  font-family: var(--rdp-sans);
+  color: var(--rdp-text);
+  margin-top: 0;
+  margin-bottom: var(--rdp-space-sm);
+  line-height: var(--rdp-leading-tight);
+}
+
+h1,
+.rdp-h1 {
+  font-size: var(--rdp-size-h1);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h2,
+.rdp-h2 {
+  font-size: var(--rdp-size-h2);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h3,
+.rdp-h3 {
+  font-size: var(--rdp-size-h3);
+  font-weight: 600;
+}
+
+h4,
+.rdp-h4 {
+  font-size: var(--rdp-size-h4);
+  font-weight: 500;
+}
+
+h5,
+.rdp-h5 {
+  font-size: var(--rdp-size-h5);
+  font-weight: 500;
+  font-family: var(--rdp-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+h6,
+.rdp-h6 {
+  font-size: var(--rdp-size-h6);
+  font-weight: 500;
+  font-family: var(--rdp-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--rdp-text-muted);
+}
+
+
+/* ── DISPLAY TYPOGRAPHY ──────────────────────────────────── */
+
+.rdp-display {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-display);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.rdp-display-sm {
+  font-family: var(--rdp-sans);
+  font-size: clamp(1.875rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+
+/* ── BODY TYPOGRAPHY ─────────────────────────────────────── */
+
+.rdp-body {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-body);
+  font-weight: 400;
+  line-height: var(--rdp-leading-relaxed);
+}
+
+.rdp-body-lg {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-body-lg);
+  font-weight: 400;
+  line-height: var(--rdp-leading-relaxed);
+}
+
+.rdp-body-sm {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-small);
+  font-weight: 400;
+  line-height: var(--rdp-leading-normal);
+}
+
+
+/* ── UI / FUNCTIONAL TYPOGRAPHY ──────────────────────────── */
+
+.rdp-ui {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-small);
+  font-weight: 500;
+}
+
+.rdp-caption {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-caption);
+  font-weight: 400;
+  color: var(--rdp-text-muted);
+}
+
+.rdp-label {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-caption);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rdp-text-secondary);
+}
+
+.rdp-overline {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-micro);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rdp-text-muted);
+}
+
+
+/* ── SPECIAL TYPOGRAPHY ──────────────────────────────────── */
+
+.rdp-quote {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-h3);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.65;
+}
+
+.rdp-numeric {
+  font-family: var(--rdp-sans);
+  font-variant-numeric: tabular-nums;
+}
+
+.rdp-code {
+  font-family: var(--rdp-mono);
+  font-size: 0.9em;
+}
+
+.rdp-serif {
+  font-family: var(--rdp-serif);
+}
+
+.rdp-sans {
+  font-family: var(--rdp-sans);
+}
+
+.rdp-mono {
+  font-family: var(--rdp-mono);
+}
+
+
+/* ── LINK STYLES ─────────────────────────────────────────── */
+
+.rdp-link {
+  color: var(--rdp-text-link);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 2px;
+  transition: color var(--rdp-transition), text-decoration-color var(--rdp-transition);
+}
+
+.rdp-link:hover {
+  color: var(--rdp-text-link-hover);
+  text-decoration-color: currentColor;
+}
+
+
+/* ── LIST STYLES ─────────────────────────────────────────── */
+
+.rdp-list {
+  padding-left: var(--rdp-space-lg);
+}
+
+.rdp-list li {
+  margin-bottom: var(--rdp-space-xs);
+}
+
+.rdp-list-none {
+  list-style: none;
+  padding-left: 0;
+}
+
+
+/* ── CODE & PRE ──────────────────────────────────────────── */
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--rdp-mono);
+}
+
+pre {
+  padding: var(--rdp-space-md);
+  border-radius: var(--rdp-radius-md);
+  overflow-x: auto;
+}
+
+code {
+  font-size: 0.9em;
+}

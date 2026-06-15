@@ -1,0 +1,383 @@
+/*
+ * ============================================================
+ *  RDP Homepage Layout — v1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Layout untuk landing page dan marketing site.
+ *  Struktur: Navbar → Hero → Sections → Footer
+ *
+ *  Markup:
+ *    <body class="rdp-layout-homepage">
+ *      <nav class="rdp-topnav">...</nav>
+ *      <section class="rdp-hero">...</section>
+ *      <section class="rdp-section">...</section>
+ *      <footer class="rdp-footer">...</footer>
+ *    </body>
+ * ============================================================
+ */
+
+
+/* ── TOP NAVIGATION BAR ─────────────────────────────────── */
+
+.rdp-topnav {
+  position: sticky;
+  top: 0;
+  z-index: var(--rdp-z-sticky);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--rdp-space-md);
+
+  padding: var(--rdp-space-sm) var(--rdp-space-md);
+  min-height: 3.5rem;
+
+  background-color: var(--rdp-bg);
+  border-bottom: 1px solid var(--rdp-border-light);
+
+  transition: background-color var(--rdp-transition);
+}
+
+@media (min-width: 768px) {
+  .rdp-topnav {
+    padding: var(--rdp-space-sm) var(--rdp-space-xl);
+  }
+}
+
+.rdp-topnav__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--rdp-space-sm);
+  text-decoration: none;
+  color: var(--rdp-text);
+  font-family: var(--rdp-sans);
+  font-weight: 700;
+  font-size: var(--rdp-size-body-lg);
+}
+
+.rdp-topnav__brand img {
+  height: 2rem;
+}
+
+.rdp-topnav__links {
+  display: none;
+  align-items: center;
+  gap: var(--rdp-space-lg);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .rdp-topnav__links {
+    display: flex;
+  }
+}
+
+.rdp-topnav__links a {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-small);
+  font-weight: 500;
+  color: var(--rdp-text-secondary);
+  text-decoration: none;
+  transition: color var(--rdp-transition);
+}
+
+.rdp-topnav__links a:hover,
+.rdp-topnav__links a.active {
+  color: var(--rdp-primary);
+}
+
+.rdp-topnav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--rdp-space-sm);
+}
+
+/* Mobile menu toggle */
+.rdp-topnav__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: transparent;
+  border: none;
+  color: var(--rdp-text);
+  cursor: pointer;
+  border-radius: var(--rdp-radius-md);
+}
+
+@media (min-width: 768px) {
+  .rdp-topnav__toggle {
+    display: none;
+  }
+}
+
+.rdp-topnav__toggle:hover {
+  background-color: var(--rdp-bg-secondary);
+}
+
+/* Mobile menu overlay */
+.rdp-topnav__mobile {
+  display: none;
+  position: fixed;
+  inset: 0;
+  top: 3.5rem;
+  z-index: var(--rdp-z-fixed);
+  background-color: var(--rdp-bg);
+  padding: var(--rdp-space-md);
+  border-top: 1px solid var(--rdp-border-light);
+  overflow-y: auto;
+}
+
+.rdp-topnav__mobile.is-open {
+  display: block;
+  animation: rdp-fade-in var(--rdp-duration-normal) var(--rdp-easing-default);
+}
+
+.rdp-topnav__mobile a {
+  display: block;
+  padding: var(--rdp-space-sm) 0;
+  font-size: var(--rdp-size-body);
+  font-weight: 500;
+  color: var(--rdp-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rdp-border-light);
+}
+
+
+/* ── HERO SECTION ────────────────────────────────────────── */
+
+.rdp-hero {
+  padding: var(--rdp-space-3xl) var(--rdp-space-md);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .rdp-hero {
+    padding: var(--rdp-space-4xl) var(--rdp-space-xl);
+  }
+}
+
+.rdp-hero__inner {
+  max-width: var(--rdp-container-lg);
+  margin-inline: auto;
+}
+
+.rdp-hero__overline {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-caption);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--rdp-secondary);
+  margin-bottom: var(--rdp-space-md);
+}
+
+.rdp-hero__title {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-display);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--rdp-text);
+  margin-bottom: var(--rdp-space-md);
+}
+
+.rdp-hero__subtitle {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-body-lg);
+  color: var(--rdp-text-secondary);
+  line-height: var(--rdp-leading-relaxed);
+  max-width: 640px;
+  margin-inline: auto;
+  margin-bottom: var(--rdp-space-xl);
+}
+
+.rdp-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--rdp-space-sm);
+}
+
+
+/* ── CONTENT SECTIONS ────────────────────────────────────── */
+
+.rdp-section {
+  padding: var(--rdp-space-3xl) var(--rdp-space-md);
+}
+
+@media (min-width: 768px) {
+  .rdp-section {
+    padding: var(--rdp-space-4xl) var(--rdp-space-xl);
+  }
+}
+
+.rdp-section__inner {
+  max-width: var(--rdp-container-max);
+  margin-inline: auto;
+}
+
+.rdp-section--alt {
+  background-color: var(--rdp-bg-secondary);
+}
+
+.rdp-section--cream {
+  background-color: var(--rdp-cream);
+}
+
+.rdp-section--dark {
+  background-color: var(--rdp-primary);
+  color: var(--rdp-text-inverse);
+}
+
+.rdp-section__header {
+  text-align: center;
+  max-width: 640px;
+  margin-inline: auto;
+  margin-bottom: var(--rdp-space-2xl);
+}
+
+.rdp-section__title {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-h1);
+  font-weight: 700;
+  margin-bottom: var(--rdp-space-sm);
+}
+
+.rdp-section__description {
+  font-size: var(--rdp-size-body);
+  color: var(--rdp-text-secondary);
+  line-height: var(--rdp-leading-relaxed);
+}
+
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+
+.rdp-footer {
+  padding: var(--rdp-space-2xl) var(--rdp-space-md);
+  background-color: #091A30;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: var(--rdp-size-small);
+}
+
+.rdp-footer p {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+@media (min-width: 768px) {
+  .rdp-footer {
+    padding: var(--rdp-space-3xl) var(--rdp-space-xl);
+  }
+}
+
+.rdp-footer__inner {
+  max-width: var(--rdp-container-max);
+  margin-inline: auto;
+}
+
+.rdp-footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--rdp-space-xl);
+  margin-bottom: var(--rdp-space-xl);
+}
+
+@media (min-width: 768px) {
+  .rdp-footer__grid {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}
+
+.rdp-footer__brand {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-body-lg);
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: var(--rdp-space-sm);
+}
+
+.rdp-footer__heading {
+  font-family: var(--rdp-sans);
+  font-size: var(--rdp-size-caption);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: var(--rdp-space-md);
+}
+
+.rdp-footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rdp-footer__links li::before {
+  display: none !important;
+  content: "" !important;
+}
+
+.rdp-list-none,
+.rdp-list-none li {
+  list-style: none !important;
+  margin: 0;
+  padding: 0;
+}
+
+.rdp-list-none li::before {
+  display: none !important;
+  content: "" !important;
+}
+
+.rdp-footer__links li {
+  margin-bottom: var(--rdp-space-xs);
+}
+
+.rdp-footer__links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color var(--rdp-transition);
+}
+
+.rdp-footer__links a:hover {
+  color: #FFFFFF;
+}
+
+.rdp-footer__bottom {
+  padding-top: var(--rdp-space-xl);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--rdp-space-sm);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: var(--rdp-size-caption);
+}
+
+
+/* ── ANIMATIONS ──────────────────────────────────────────── */
+
+@keyframes rdp-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rdp-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

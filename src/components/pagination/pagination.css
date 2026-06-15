@@ -1,0 +1,118 @@
+/*
+ * ============================================================
+ *  RDP Pagination Component — v1.0.0
+ *  Radian Data Platform · radian.web.id
+ *
+ *  Markup:
+ *    <nav class="rdp-pagination" aria-label="Pagination">
+ *      <a href="#" class="rdp-pagination__item rdp-pagination__prev">← Prev</a>
+ *      <a href="#" class="rdp-pagination__item">1</a>
+ *      <a href="#" class="rdp-pagination__item active">2</a>
+ *      <a href="#" class="rdp-pagination__item">3</a>
+ *      <span class="rdp-pagination__item rdp-pagination__ellipsis">…</span>
+ *      <a href="#" class="rdp-pagination__item">10</a>
+ *      <a href="#" class="rdp-pagination__item rdp-pagination__next">Next →</a>
+ *    </nav>
+ * ============================================================
+ */
+
+
+/* ── BASE ────────────────────────────────────────────────── */
+
+.rdp-pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--rdp-space-2xs);
+  font-family: var(--rdp-sans);
+}
+
+
+/* ── ITEMS ───────────────────────────────────────────────── */
+
+.rdp-pagination__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  padding: 0 var(--rdp-space-sm);
+
+  font-size: var(--rdp-size-small);
+  font-weight: 500;
+  color: var(--rdp-text-secondary);
+  text-decoration: none;
+
+  border: 1px solid transparent;
+  border-radius: var(--rdp-radius-md);
+  cursor: pointer;
+
+  transition: background-color var(--rdp-transition),
+    color var(--rdp-transition),
+    border-color var(--rdp-transition);
+}
+
+.rdp-pagination__item:hover {
+  background-color: var(--rdp-bg-secondary);
+  color: var(--rdp-text);
+}
+
+.rdp-pagination__item.active,
+.rdp-pagination__item[aria-current="page"] {
+  background-color: var(--rdp-primary);
+  color: var(--rdp-text-inverse);
+  border-color: var(--rdp-primary);
+  font-weight: 600;
+}
+
+.rdp-pagination__item:disabled,
+.rdp-pagination__item.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+
+/* ── PREV / NEXT ─────────────────────────────────────────── */
+
+.rdp-pagination__prev,
+.rdp-pagination__next {
+  font-weight: 500;
+  gap: var(--rdp-space-2xs);
+}
+
+
+/* ── ELLIPSIS ────────────────────────────────────────────── */
+
+.rdp-pagination__ellipsis {
+  cursor: default;
+  color: var(--rdp-text-muted);
+}
+
+.rdp-pagination__ellipsis:hover {
+  background-color: transparent;
+}
+
+
+/* ── SIZE VARIANTS ───────────────────────────────────────── */
+
+.rdp-pagination--sm .rdp-pagination__item {
+  min-width: 1.75rem;
+  height: 1.75rem;
+  font-size: var(--rdp-size-caption);
+}
+
+.rdp-pagination--lg .rdp-pagination__item {
+  min-width: 2.75rem;
+  height: 2.75rem;
+  font-size: var(--rdp-size-body);
+}
+
+
+/* ── CENTERED ────────────────────────────────────────────── */
+
+.rdp-pagination--center {
+  justify-content: center;
+}
+
+.rdp-pagination--end {
+  justify-content: flex-end;
+}
