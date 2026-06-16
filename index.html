@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="RDP-UI — Design System & UI Framework untuk ekosistem Radian. Preview komponen, token, tema, dan layout.">
-  <title>RDP-UI — Design System Preview</title>
+  <meta name="description" content="RDP-UI — Design System & UI Framework minimalis untuk seluruh ekosistem produk Radian.">
+  <title>RDP-UI — Minimalist & Premium Design System</title>
 
   <!-- PicoCSS 2.1.1 (CDN) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.min.css">
@@ -14,728 +14,408 @@
   <script type="module" src="/src/rdp.js" defer></script>
 
   <style>
-    /* Demo-only styles */
-    .demo-section { margin-bottom: var(--rdp-space-2xl); }
-    .demo-title {
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .home-nav {
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: all var(--rdp-transition);
+    }
+
+    .home-nav.scrolled {
+      background: var(--rdp-surface);
+      border-bottom: 1px solid var(--rdp-border);
+      box-shadow: var(--rdp-shadow-xs);
+    }
+
+    .hero-section {
+      text-align: center;
+      padding: var(--rdp-space-3xl) 0 var(--rdp-space-2xl);
+    }
+
+    .hero-title {
       font-family: var(--rdp-serif);
-      font-size: var(--rdp-size-h2);
+      font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 700;
-      border-bottom: 2px solid var(--rdp-border);
-      padding-bottom: var(--rdp-space-sm);
+      line-height: 1.15;
+      color: var(--rdp-text);
+      margin-bottom: var(--rdp-space-md);
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, var(--rdp-primary) 0%, var(--rdp-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: var(--rdp-size-body-lg);
+      color: var(--rdp-text-secondary);
+      max-width: 680px;
+      margin-inline: auto;
       margin-bottom: var(--rdp-space-lg);
     }
-    .demo-subtitle {
-      font-family: var(--rdp-sans);
+
+    .interactive-preview {
+      background: var(--rdp-surface);
+      border: 1px solid var(--rdp-border);
+      border-radius: var(--rdp-radius-lg);
+      padding: var(--rdp-space-lg);
+      box-shadow: var(--rdp-shadow-md);
+      max-width: 800px;
+      margin-inline: auto;
+      margin-bottom: var(--rdp-space-3xl);
+    }
+
+    .preview-demo {
+      border-bottom: 1px solid var(--rdp-border);
+      padding-bottom: var(--rdp-space-lg);
+      margin-bottom: var(--rdp-space-lg);
+    }
+
+    .preview-code pre {
+      background: var(--rdp-bg-secondary);
+      border: 1px solid var(--rdp-border);
+      border-radius: var(--rdp-radius-md);
+      padding: var(--rdp-space-md);
+      margin: 0;
+      text-align: left;
+      overflow-x: auto;
+    }
+
+    .preview-code code {
+      font-family: var(--rdp-mono);
       font-size: var(--rdp-size-small);
-      font-weight: 600;
+      color: var(--rdp-text);
+    }
+
+    .stats-section {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--rdp-space-md);
+      text-align: center;
+      margin-bottom: var(--rdp-space-3xl);
+      border-top: 1px solid var(--rdp-border);
+      border-bottom: 1px solid var(--rdp-border);
+      padding: var(--rdp-space-xl) 0;
+    }
+
+    .stat-number {
+      font-family: var(--rdp-serif);
+      font-size: var(--rdp-size-h1);
+      font-weight: 700;
+      color: var(--rdp-primary);
+    }
+
+    .stat-label {
+      font-size: var(--rdp-size-caption);
       color: var(--rdp-text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: var(--rdp-space-sm);
     }
-    .demo-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--rdp-space-sm);
-      align-items: center;
-      margin-bottom: var(--rdp-space-md);
+
+    .features-section {
+      margin-bottom: var(--rdp-space-3xl);
     }
-    .demo-grid {
+
+    .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: var(--rdp-space-md);
-      margin-bottom: var(--rdp-space-md);
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--rdp-space-lg);
     }
-    .demo-color-swatch {
-      height: 3rem;
-      border-radius: var(--rdp-radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: var(--rdp-size-caption);
-      font-weight: 600;
-      color: white;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+
+    @media (max-width: 1024px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
-    .demo-color-group {
-      display: flex;
-      border-radius: var(--rdp-radius-md);
-      overflow: hidden;
+
+    @media (max-width: 768px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feature-card {
+      height: 100%;
+      transition: all var(--rdp-transition);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--rdp-shadow-md);
+      border-color: var(--rdp-primary-300);
+    }
+
+    .feature-card__icon {
+      font-size: var(--rdp-size-h2);
+      color: var(--rdp-primary);
       margin-bottom: var(--rdp-space-sm);
     }
-    .demo-color-group > div {
-      flex: 1;
-      padding: var(--rdp-space-sm);
-      font-size: var(--rdp-size-micro);
-      font-weight: 500;
-      text-align: center;
+
+    .comparison-section {
+      margin-bottom: var(--rdp-space-3xl);
     }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: var(--rdp-space-lg);
+    }
+
+    .comparison-card {
+      background: var(--rdp-surface);
+      border: 1px solid var(--rdp-border);
+      border-radius: var(--rdp-radius-lg);
+      padding: var(--rdp-space-lg);
+    }
+
+    .comparison-card pre {
+      background: var(--rdp-bg-secondary);
+      border: 1px solid var(--rdp-border);
+      border-radius: var(--rdp-radius-md);
+      padding: var(--rdp-space-md);
+      margin: 0;
+      overflow-x: auto;
+    }
+
     .theme-switcher {
-      position: fixed;
-      bottom: var(--rdp-space-md);
-      right: var(--rdp-space-md);
-      z-index: var(--rdp-z-toast);
       display: flex;
       gap: var(--rdp-space-2xs);
-      background: var(--rdp-surface);
+      background: var(--rdp-bg-secondary);
       padding: var(--rdp-space-2xs);
       border-radius: var(--rdp-radius-pill);
-      box-shadow: var(--rdp-shadow-lg);
       border: 1px solid var(--rdp-border);
     }
+
     .theme-switcher button {
-      padding: var(--rdp-space-xs) var(--rdp-space-sm);
+      padding: var(--rdp-space-2xs) var(--rdp-space-xs);
       border: none;
       background: transparent;
       border-radius: var(--rdp-radius-pill);
       font-size: var(--rdp-size-caption);
-      font-weight: 500;
       cursor: pointer;
       color: var(--rdp-text-secondary);
       transition: all var(--rdp-transition);
     }
+
     .theme-switcher button.active,
     .theme-switcher button:hover {
       background: var(--rdp-primary);
       color: var(--rdp-text-inverse);
     }
+
+    @media (max-width: 768px) {
+      .stats-section {
+        grid-template-columns: 1fr;
+        gap: var(--rdp-space-lg);
+      }
+    }
   </style>
 </head>
 <body>
-  <a href="#main" class="rdp-skip-nav">Langsung ke konten</a>
 
-  <!-- ═══════════════════════════════════════════════════════
-       HEADER
-       ═══════════════════════════════════════════════════════ -->
-  <header class="rdp-container" style="padding-top: var(--rdp-space-2xl); padding-bottom: var(--rdp-space-xl); text-align: center;">
-    <p class="rdp-overline" style="color: var(--rdp-secondary);">Design System v1.0.0</p>
-    <h1 class="rdp-display" style="margin-bottom: var(--rdp-space-sm);">RDP-UI</h1>
-    <p class="rdp-body-lg" style="color: var(--rdp-text-secondary); max-width: 600px; margin-inline: auto;">
-      Design System & UI Framework standar untuk seluruh produk dalam ekosistem <strong>Radian Data Platform</strong>.
+  <!-- Top Navigation Bar -->
+  <nav class="home-nav rdp-p-sm" id="global-nav" style="position: sticky; top: 0; z-index: var(--rdp-z-toast);">
+    <div class="rdp-container-fluid" style="display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100% !important; gap: var(--rdp-space-md);">
+      <!-- Kiri: Logo & Nama -->
+      <a href="/" style="display: flex !important; align-items: center !important; gap: var(--rdp-space-xs) !important; text-decoration: none; color: inherit;">
+        <img src="/static/logo-rdp-color.png" alt="RDP Logo" style="height: 1.25rem; width: auto; display: block; margin: 0;">
+        <strong style="font-family: var(--rdp-serif); font-size: 1.25rem; line-height: 1.25rem; white-space: nowrap; display: inline-flex; align-items: center;">UI</strong>
+      </a>
+      <!-- Tengah: Menu Utama -->
+      <div style="display: flex !important; align-items: center !important; gap: var(--rdp-space-xs) !important; flex-grow: 1 !important; justify-content: center !important;">
+        <a href="/" class="rdp-btn rdp-btn--primary rdp-btn--sm" style="margin-bottom: 0;">Beranda</a>
+        <a href="/examples/" class="rdp-btn rdp-btn--ghost rdp-btn--sm" style="margin-bottom: 0;">Examples</a>
+        <a href="/docs/" class="rdp-btn rdp-btn--ghost rdp-btn--sm" style="margin-bottom: 0;">Docs</a>
+      </div>
+      <!-- Kanan: Switcher -->
+      <div style="display: flex !important; align-items: center !important;">
+        <div class="theme-switcher">
+          <button data-rdp-action="set-theme" data-rdp-theme="light" id="theme-light">☀️</button>
+          <button data-rdp-action="set-theme" data-rdp-theme="dark" id="theme-dark">🌙</button>
+          <button data-rdp-action="set-theme" data-rdp-theme="auto" id="theme-auto">🖥️</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section rdp-container">
+    <h1 class="hero-title">Minimalist & Premium<br><span>Design System for RDP</span></h1>
+    <p class="hero-subtitle">
+      Design System dan UI Framework minimalis berbasis PicoCSS yang dioptimalkan untuk performa cepat, aksesibilitas global (WCAG 2.2), serta integrasi HTMX.
     </p>
     <div class="rdp-cluster rdp-cluster-md" style="justify-content: center; margin-top: var(--rdp-space-lg);">
-      <a href="#colors" class="rdp-btn rdp-btn--primary">Foundation</a>
-      <a href="#buttons" class="rdp-btn rdp-btn--secondary">Components</a>
-      <a href="#examples-nav" class="rdp-btn rdp-btn--outline">Layouts</a>
-      <a href="#form-nav" class="rdp-btn rdp-btn--ghost">Form & Nav</a>
+      <a href="/docs/" class="rdp-btn rdp-btn--primary">Get Started</a>
+      <a href="/examples/" class="rdp-btn rdp-btn--outline-secondary">Examples</a>
     </div>
   </header>
 
-  <main id="main" class="rdp-container">
-
-    <!-- ═══════════════════════════════════════════════════════
-         COLORS
-         ═══════════════════════════════════════════════════════ -->
-    <section class="demo-section" id="colors">
-      <h2 class="demo-title">🎨 Brand Colors</h2>
-
-      <p class="demo-subtitle">Primary — Navy</p>
-      <div class="demo-color-group">
-        <div style="background: var(--rdp-primary-50); color: var(--rdp-primary-900);">50</div>
-        <div style="background: var(--rdp-primary-100); color: var(--rdp-primary-900);">100</div>
-        <div style="background: var(--rdp-primary-200); color: var(--rdp-primary-900);">200</div>
-        <div style="background: var(--rdp-primary-300); color: #fff;">300</div>
-        <div style="background: var(--rdp-primary-500); color: #fff;">500</div>
-        <div style="background: var(--rdp-primary-700); color: #fff;">700</div>
-        <div style="background: var(--rdp-primary-900); color: #fff;">900</div>
-      </div>
-
-      <p class="demo-subtitle">Secondary — Gold</p>
-      <div class="demo-color-group">
-        <div style="background: var(--rdp-secondary-50); color: var(--rdp-secondary-900);">50</div>
-        <div style="background: var(--rdp-secondary-100); color: var(--rdp-secondary-900);">100</div>
-        <div style="background: var(--rdp-secondary-300); color: var(--rdp-secondary-900);">300</div>
-        <div style="background: var(--rdp-secondary-500); color: #fff;">500</div>
-        <div style="background: var(--rdp-secondary-700); color: #fff;">700</div>
-        <div style="background: var(--rdp-secondary-900); color: #fff;">900</div>
-      </div>
-
-      <p class="demo-subtitle">Accent — Teal</p>
-      <div class="demo-color-group">
-        <div style="background: var(--rdp-accent-50); color: var(--rdp-accent-900);">50</div>
-        <div style="background: var(--rdp-accent-100); color: var(--rdp-accent-900);">100</div>
-        <div style="background: var(--rdp-accent-300); color: #fff;">300</div>
-        <div style="background: var(--rdp-accent-500); color: #fff;">500</div>
-        <div style="background: var(--rdp-accent-700); color: #fff;">700</div>
-        <div style="background: var(--rdp-accent-900); color: #fff;">900</div>
-      </div>
-
-      <p class="demo-subtitle">Semantic</p>
-      <div class="demo-row">
-        <div class="demo-color-swatch" style="background: var(--rdp-success); flex: 1;">Success</div>
-        <div class="demo-color-swatch" style="background: var(--rdp-warning); color: #333; text-shadow: none; flex: 1;">Warning</div>
-        <div class="demo-color-swatch" style="background: var(--rdp-danger); flex: 1;">Danger</div>
-        <div class="demo-color-swatch" style="background: var(--rdp-info); flex: 1;">Info</div>
-      <p class="demo-subtitle">Extra Colors (Amber, Purple, Coral)</p>
-      <div class="demo-row rdp-mb-md">
-        <div class="demo-color-swatch" style="background: var(--rdp-amber); color: #000; text-shadow: none; flex: 1;">Amber (var(--rdp-amber))</div>
-        <div class="demo-color-swatch" style="background: var(--rdp-purple); flex: 1;">Purple (var(--rdp-purple))</div>
-        <div class="demo-color-swatch" style="background: var(--rdp-coral); flex: 1;">Coral (var(--rdp-coral))</div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         TYPOGRAPHY
-         ═══════════════════════════════════════════════════════ -->
-    <section class="demo-section" id="typography">
-      <h2 class="demo-title">✍️ Typography</h2>
-
-      <div style="margin-bottom: var(--rdp-space-lg);">
-        <p class="rdp-overline">RDP Serif — Playfair Display</p>
-        <p class="rdp-display" style="margin-bottom: var(--rdp-space-sm);">Display Heading</p>
-        <h1>Heading 1 — Radian Data Platform</h1>
-        <h2>Heading 2 — Design System</h2>
-        <h3>Heading 3 — UI Framework</h3>
-        <h4>Heading 4 — Components</h4>
-      </div>
-
-      <div style="margin-bottom: var(--rdp-space-lg);">
-        <p class="rdp-overline">RDP Sans — Plus Jakarta Sans</p>
-        <p class="rdp-body-lg">Body Large — Digunakan untuk lead paragraph dan konten yang membutuhkan penekanan.</p>
-        <p class="rdp-body">Body — Teks utama untuk konten. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <p class="rdp-body-sm">Body Small — Teks sekunder, keterangan tambahan, dan informasi pendukung.</p>
-        <p class="rdp-caption">Caption — Teks kecil untuk metadata, timestamp, dan keterangan gambar.</p>
-        <p class="rdp-label">LABEL — Untuk form label dan section header kecil</p>
-      </div>
-
-      <div>
-        <p class="rdp-overline">Special Styles</p>
-        <blockquote class="rdp-quote" style="border-left: 3px solid var(--rdp-secondary); padding-left: var(--rdp-space-md);">
-          "Menjadi fondasi UI tunggal yang digunakan seluruh produk Radian."
-        </blockquote>
-        <p>Kode inline: <code class="rdp-code">var(--rdp-primary-900)</code></p>
-        <p class="rdp-numeric" style="font-size: var(--rdp-size-h2);">1,234,567.89</p>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         BUTTONS
-         ═══════════════════════════════════════════════════════ -->
-    <section class="demo-section" id="buttons">
-      <h2 class="demo-title">🔘 Buttons</h2>
-
-      <p class="demo-subtitle">Variants</p>
-      <div class="demo-row">
-        <button class="rdp-btn">Default</button>
-        <button class="rdp-btn rdp-btn--primary">Primary</button>
-        <button class="rdp-btn rdp-btn--secondary">Secondary</button>
-        <button class="rdp-btn rdp-btn--accent">Accent</button>
-        <button class="rdp-btn rdp-btn--danger">Danger</button>
-      </div>
-
-      <p class="demo-subtitle">Outline & Ghost</p>
-      <div class="demo-row">
-        <button class="rdp-btn rdp-btn--outline">Outline</button>
-        <button class="rdp-btn rdp-btn--outline-secondary">Outline Secondary</button>
-        <button class="rdp-btn rdp-btn--outline-danger">Outline Danger</button>
-        <button class="rdp-btn rdp-btn--ghost">Ghost</button>
-      </div>
-
-      <p class="demo-subtitle">Sizes</p>
-      <div class="demo-row">
-        <button class="rdp-btn rdp-btn--primary rdp-btn--xs">Extra Small</button>
-        <button class="rdp-btn rdp-btn--primary rdp-btn--sm">Small</button>
-        <button class="rdp-btn rdp-btn--primary">Medium (Default)</button>
-        <button class="rdp-btn rdp-btn--primary rdp-btn--lg">Large</button>
-        <button class="rdp-btn rdp-btn--primary rdp-btn--xl">Extra Large</button>
-      </div>
-
-      <p class="demo-subtitle">States</p>
-      <div class="demo-row">
-        <button class="rdp-btn rdp-btn--primary" disabled>Disabled</button>
-        <button class="rdp-btn rdp-btn--primary rdp-btn--loading">Loading</button>
-        <button class="rdp-btn rdp-btn--primary rdp-btn--pill">Pill Shape</button>
-        <button class="rdp-btn rdp-btn--primary rdp-btn--block" style="max-width: 300px;">Full Width</button>
-      </div>
-
-      <p class="demo-subtitle">Button Group</p>
-      <div class="demo-row">
-        <div class="rdp-btn-group">
-          <button class="rdp-btn">Kiri</button>
-          <button class="rdp-btn">Tengah</button>
-          <button class="rdp-btn">Kanan</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         BADGES
-         ═══════════════════════════════════════════════════════ -->
-    <section class="demo-section" id="badges">
-      <h2 class="demo-title">🏷️ Badges</h2>
-
-      <p class="demo-subtitle">Soft Variants</p>
-      <div class="demo-row">
-        <span class="rdp-badge">Default</span>
-        <span class="rdp-badge rdp-badge--primary">Primary</span>
-        <span class="rdp-badge rdp-badge--secondary">Secondary</span>
-        <span class="rdp-badge rdp-badge--accent">Accent</span>
-        <span class="rdp-badge rdp-badge--success">Success</span>
-        <span class="rdp-badge rdp-badge--warning">Warning</span>
-        <span class="rdp-badge rdp-badge--danger">Danger</span>
-        <span class="rdp-badge rdp-badge--info">Info</span>
-      </div>
-
-      <p class="demo-subtitle">Solid Variants</p>
-      <div class="demo-row">
-        <span class="rdp-badge rdp-badge--solid-primary">Primary</span>
-        <span class="rdp-badge rdp-badge--solid-secondary">Secondary</span>
-        <span class="rdp-badge rdp-badge--solid-success">Success</span>
-        <span class="rdp-badge rdp-badge--solid-danger">Danger</span>
-      </div>
-
-      <p class="demo-subtitle">Sizes & Outline</p>
-      <div class="demo-row">
-        <span class="rdp-badge rdp-badge--sm rdp-badge--primary">Small</span>
-        <span class="rdp-badge rdp-badge--primary">Medium</span>
-        <span class="rdp-badge rdp-badge--lg rdp-badge--primary">Large</span>
-        <span class="rdp-badge rdp-badge--outline">Outline</span>
-        <span class="rdp-badge rdp-badge--outline-primary">Outline Primary</span>
-      </div>
-
-      <p class="demo-subtitle">Dot Indicators</p>
-      <div class="demo-row">
-        <span class="rdp-badge rdp-badge--dot rdp-badge--success"></span> Online
-        <span class="rdp-badge rdp-badge--dot rdp-badge--danger"></span> Offline
-        <span class="rdp-badge rdp-badge--dot rdp-badge--warning"></span> Away
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         ALERTS
-         ═══════════════════════════════════════════════════════ -->
-    <section class="demo-section" id="alerts">
-      <h2 class="demo-title">⚠️ Alerts</h2>
-
-      <div class="rdp-alert rdp-alert--info" role="alert">
-        <div class="rdp-alert__content">
-          <div class="rdp-alert__title">Informasi</div>
-          Sistem akan melakukan pemeliharaan pada 20 Juni 2026 pukul 02:00 WIB.
-        </div>
-      </div>
-
-      <div class="rdp-alert rdp-alert--success" role="alert">
-        <div class="rdp-alert__content">
-          <strong>Berhasil!</strong> Data telah disimpan ke database.
-        </div>
-      </div>
-
-      <div class="rdp-alert rdp-alert--warning" role="alert">
-        <div class="rdp-alert__content">
-          <strong>Peringatan:</strong> Kuota penyimpanan tersisa 15%.
-        </div>
-      </div>
-
-      <div class="rdp-alert rdp-alert--danger rdp-alert--dismissible" role="alert">
-        <div class="rdp-alert__content">
-          <strong>Error:</strong> Gagal menghubungi server. Silakan coba lagi.
-        </div>
-        <button class="rdp-alert__close" data-rdp-action="dismiss-alert" aria-label="Tutup">&times;</button>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         AVATARS
-         ═══════════════════════════════════════════════════════ -->
-    <section class="demo-section" id="avatars">
-      <h2 class="demo-title">👤 Avatars</h2>
-
-      <p class="demo-subtitle">Sizes & Initials</p>
-      <div class="demo-row">
-        <div class="rdp-avatar rdp-avatar--xs"><span class="rdp-avatar__initials">XS</span></div>
-        <div class="rdp-avatar rdp-avatar--sm"><span class="rdp-avatar__initials">SM</span></div>
-        <div class="rdp-avatar"><span class="rdp-avatar__initials">MD</span></div>
-        <div class="rdp-avatar rdp-avatar--lg"><span class="rdp-avatar__initials">LG</span></div>
-        <div class="rdp-avatar rdp-avatar--xl"><span class="rdp-avatar__initials">XL</span></div>
-        <div class="rdp-avatar rdp-avatar--2xl"><span class="rdp-avatar__initials">2X</span></div>
-      </div>
-
-      <p class="demo-subtitle">Colors & Status</p>
-      <div class="demo-row">
-        <div class="rdp-avatar">
-          <span class="rdp-avatar__initials">RD</span>
-          <span class="rdp-avatar__status rdp-avatar__status--online"></span>
-        </div>
-        <div class="rdp-avatar rdp-avatar--secondary">
-          <span class="rdp-avatar__initials">AB</span>
-          <span class="rdp-avatar__status rdp-avatar__status--busy"></span>
-        </div>
-        <div class="rdp-avatar rdp-avatar--accent">
-          <span class="rdp-avatar__initials">CD</span>
-          <span class="rdp-avatar__status rdp-avatar__status--away"></span>
-        </div>
-        <div class="rdp-avatar rdp-avatar--neutral">
-          <span class="rdp-avatar__initials">EF</span>
-          <span class="rdp-avatar__status rdp-avatar__status--offline"></span>
-        </div>
-      </div>
-
-      <p class="demo-subtitle">Avatar Group</p>
-      <div class="demo-row">
-        <div class="rdp-avatar-group">
-          <div class="rdp-avatar-group__count">+3</div>
-          <div class="rdp-avatar"><span class="rdp-avatar__initials">A</span></div>
-          <div class="rdp-avatar rdp-avatar--secondary"><span class="rdp-avatar__initials">B</span></div>
-          <div class="rdp-avatar rdp-avatar--accent"><span class="rdp-avatar__initials">C</span></div>
-        </div>
-      </div>
-
-      <p class="demo-subtitle">Square Shape</p>
-      <div class="demo-row">
-        <div class="rdp-avatar rdp-avatar--square"><span class="rdp-avatar__initials">SQ</span></div>
-        <div class="rdp-avatar rdp-avatar--lg rdp-avatar--square rdp-avatar--secondary"><span class="rdp-avatar__initials">SQ</span></div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         SPINNERS / AI LOADER
-         ═══════════════════════════════════════════════════════ -->
-    <section class="demo-section" id="spinners">
-      <h2 class="demo-title">⏳ AI Loader & Spinners</h2>
-      <p class="demo-subtitle">Taliti Processing Loader (Organic AI Loader)</p>
-      <div class="rdp-card rdp-p-lg rdp-mb-lg rdp-text-center">
-        <div style="display: inline-block; padding: 2rem; background: var(--rdp-bg-secondary); border-radius: var(--rdp-radius-lg);">
-          <div class="ai-loader ai-loader--xl" style="vertical-align: middle; margin-right: 1.5rem;">
-            <div class="core"></div>
-            <span class="ray ray-1"></span>
-            <span class="ray ray-2"></span>
-            <span class="ray ray-3"></span>
-            <span class="ray ray-4"></span>
-            <span class="ray ray-5"></span>
-            <span class="ray ray-6"></span>
-            <span class="ray ray-7"></span>
-            <span class="ray ray-8"></span>
-            <span class="particle p1"></span>
-            <span class="particle p2"></span>
-            <span class="particle p3"></span>
-            <span class="particle p4"></span>
-            <span class="particle p5"></span>
-            <span class="particle p6"></span>
-            <span class="particle p7"></span>
-            <span class="particle p8"></span>
-          </div>
-          <div style="display: inline-block; text-align: left; vertical-align: middle;">
-            <strong>Mengambil data marketplace...</strong>
-            <p style="margin: 0; font-size: var(--rdp-size-caption); color: var(--rdp-text-muted);">Organic Ray-Tracing Indicator</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         CARDS
-         ═══════════════════════════════════════════════════════ -->
-    <section class="demo-section" id="cards">
-      <h2 class="demo-title">🃏 Cards</h2>
-
-      <div class="demo-grid">
-        <!-- Default Card -->
-        <article class="rdp-card">
-          <header class="rdp-card__header">
-            <h3 class="rdp-card__title">Default Card</h3>
-            <p class="rdp-card__subtitle">Subtitle opsional</p>
-          </header>
-          <div class="rdp-card__body">
-            <p>Konten card standar dengan border dan shadow ringan.</p>
-          </div>
-          <footer class="rdp-card__footer">
-            <button class="rdp-btn rdp-btn--sm rdp-btn--primary">Aksi</button>
-          </footer>
-        </article>
-
-        <!-- Elevated Card -->
-        <article class="rdp-card rdp-card--elevated">
-          <header class="rdp-card__header">
-            <h3 class="rdp-card__title">Elevated Card</h3>
-          </header>
-          <div class="rdp-card__body">
-            <p>Card dengan shadow yang lebih kuat dan tanpa border visible.</p>
-          </div>
-        </article>
-
-        <!-- Flat Card -->
-        <article class="rdp-card rdp-card--flat">
-          <header class="rdp-card__header">
-            <h3 class="rdp-card__title">Flat Card</h3>
-          </header>
-          <div class="rdp-card__body">
-            <p>Card tanpa border/shadow, dengan tinted background.</p>
-          </div>
-        </article>
-
-        <!-- Brand Accent Card -->
-        <article class="rdp-card rdp-card--primary">
-          <header class="rdp-card__header">
-            <h3 class="rdp-card__title">Brand Card</h3>
-          </header>
-          <div class="rdp-card__body">
-            <p>Card dengan aksen primary di border atas.</p>
-          </div>
-        </article>
-
-        <!-- Clickable Card -->
-        <article class="rdp-card rdp-card--clickable" onclick="alert('Card diklik!')">
-          <header class="rdp-card__header">
-            <h3 class="rdp-card__title">Clickable Card</h3>
-          </header>
-          <div class="rdp-card__body">
-            <p>Card ini bisa diklik. Hover untuk melihat efek elevasi.</p>
-          </div>
-        </article>
-
-        <!-- Stats Card -->
-        <article class="rdp-card rdp-card--stats">
-          <div class="rdp-card__value">12,847</div>
-          <div class="rdp-card__label">Total Users</div>
-          <div class="rdp-card__change rdp-card__change--up">↑ 12.5%</div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         PHASE 5: FORM & NAVIGATION COMPONENTS
-         ═══════════════════════════════════════════════════════ -->
-    <section class="demo-section" id="form-nav">
-      <h2 class="demo-title">🛠️ Form & Navigation (Phase 5)</h2>
-
-      <!-- Forms -->
-      <p class="demo-subtitle">Forms & Validation</p>
-      <div class="rdp-card rdp-p-lg rdp-mb-lg">
-        <form onsubmit="event.preventDefault(); RDP.showToast({title: 'Sukses', message: 'Formulir berhasil dikirim!', type: 'success'});">
-          <div class="rdp-grid rdp-grid-responsive rdp-mb-md">
-            <div class="rdp-form-group">
-              <label for="input-nama" class="rdp-label">Nama Lengkap</label>
-              <input type="text" id="input-nama" placeholder="Masukkan nama Anda" required>
-            </div>
-            <div class="rdp-form-group">
-              <label for="input-email" class="rdp-label">Email</label>
-              <input type="email" id="input-email" class="is-valid" value="user@radian.web.id">
-              <small class="rdp-form-feedback rdp-form-feedback--success">Email valid dan tersedia.</small>
-            </div>
-          </div>
-
-          <div class="rdp-grid rdp-grid-responsive rdp-mb-md">
-            <div class="rdp-form-group">
-              <label for="input-password" class="rdp-label">Password</label>
-              <input type="password" id="input-password" class="is-invalid" placeholder="••••••••">
-              <small class="rdp-form-feedback rdp-form-feedback--error">Password minimal harus 8 karakter.</small>
-            </div>
-            <div class="rdp-form-group">
-              <label for="input-select" class="rdp-label">Role Pengguna</label>
-              <select id="input-select">
-                <option>Admin</option>
-                <option>Editor</option>
-                <option>Viewer</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="rdp-form-group rdp-mb-md">
-            <label class="rdp-label">File Lampiran</label>
-            <div class="rdp-file-upload">
-              <span class="rdp-file-upload__icon">📁</span>
-              <p class="rdp-file-upload__text">Tarik & lepas file di sini, atau <span class="rdp-file-upload__link">pilih file</span></p>
-              <input type="file" id="input-file" class="rdp-file-upload__input">
-            </div>
-          </div>
-
-          <button type="submit" class="rdp-btn rdp-btn--primary">Kirim Form</button>
+  <!-- Interactive Live Preview Section -->
+  <section class="rdp-container" style="text-align: center;">
+    <div class="interactive-preview">
+      <div class="preview-demo">
+        <form onsubmit="event.preventDefault(); alert('Pencarian berhasil diproses!');" style="display: flex !important; gap: var(--rdp-space-xs) !important; max-width: 500px; margin-inline: auto; align-items: center !important; justify-content: center !important;">
+          <input type="search" placeholder="Cari dokumentasi atau komponen..." aria-label="Search" style="margin-bottom: 0 !important; flex: 1 !important; width: auto !important;">
+          <button type="submit" class="rdp-btn rdp-btn--primary" style="margin-bottom: 0 !important; flex-shrink: 0 !important; width: auto !important; white-space: nowrap !important;">Cari</button>
         </form>
       </div>
+      <div class="preview-code">
+        <pre><code>&lt;form class="rdp-flex" style="gap: var(--rdp-space-xs);"&gt;
+  &lt;input type="search" placeholder="Cari dokumentasi..."&gt;
+  &lt;button type="submit" class="rdp-btn rdp-btn--primary"&gt;Cari&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+    </div>
+  </section>
 
-      <!-- Table -->
-      <p class="demo-subtitle">Data Table</p>
-      <div class="rdp-card rdp-mb-lg" style="overflow: hidden;">
-        <div class="rdp-table-responsive">
-          <table class="rdp-table rdp-table--striped rdp-table--hover">
-            <thead>
-              <tr>
-                <th>Nama</th>
-                <th>Role</th>
-                <th>Status</th>
-                <th>Aksi</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Radian Administrator</td>
-                <td>Super Admin</td>
-                <td><span class="rdp-badge rdp-badge--success">Aktif</span></td>
-                <td><button class="rdp-btn rdp-btn--xs rdp-btn--ghost">Edit</button></td>
-              </tr>
-              <tr>
-                <td>Budi Santoso</td>
-                <td>Editor</td>
-                <td><span class="rdp-badge rdp-badge--success">Aktif</span></td>
-                <td><button class="rdp-btn rdp-btn--xs rdp-btn--ghost">Edit</button></td>
-              </tr>
-              <tr>
-                <td>Siti Aminah</td>
-                <td>Viewer</td>
-                <td><span class="rdp-badge rdp-badge--warning">Suspended</span></td>
-                <td><button class="rdp-btn rdp-btn--xs rdp-btn--ghost">Edit</button></td>
-              </tr>
-            </tbody>
-          </table>
+  <!-- Stats Section -->
+  <section class="stats-section rdp-container">
+    <div>
+      <div class="stat-number">5+</div>
+      <div class="stat-label">Active Products (Taliti, Akun, Bayar, dsb.)</div>
+    </div>
+    <div>
+      <div class="stat-number">100+</div>
+      <div class="stat-label">Design System Tokens & Components</div>
+    </div>
+    <div>
+      <div class="stat-number">&lt;100ms</div>
+      <div class="stat-label">Ingestion & Load Latency Optimized</div>
+    </div>
+  </section>
+
+  <!-- Feature Grid Section -->
+  <section class="features-section rdp-container">
+    <h2 class="rdp-display rdp-text-center" style="margin-bottom: var(--rdp-space-xl);">A Superpowered HTML Reset</h2>
+    <div class="features-grid">
+      
+      <!-- Card 1 -->
+      <article class="rdp-card feature-card">
+        <div class="rdp-card__body">
+          <div class="feature-card__icon">✨</div>
+          <h3 class="rdp-card__title">Class-light & Semantic</h3>
+          <p class="rdp-body-sm" style="color: var(--rdp-text-secondary);">
+            Menulis markup HTML5 semantik tanpa dibebani ratusan utility classes. Browser akan merender komponen indah secara otomatis.
+          </p>
         </div>
-      </div>
+      </article>
 
-      <!-- Navigation Elements (Tabs, Breadcrumb, Dropdown, Pagination) -->
-      <div class="rdp-grid rdp-grid-responsive rdp-mb-lg">
-        <div class="rdp-card rdp-p-md">
-          <h4 class="rdp-label rdp-mb-sm">Breadcrumbs & Dropdown</h4>
-          <nav class="rdp-breadcrumb rdp-mb-md" aria-label="Breadcrumb">
-            <ol>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Master</a></li>
-              <li aria-current="page">Pengguna</li>
-            </ol>
-          </nav>
-          
-          <details class="rdp-dropdown">
-            <summary class="rdp-btn rdp-btn--outline rdp-btn--sm">Dropdown Menu ▾</summary>
-            <ul class="rdp-dropdown__menu">
-              <li><a href="#">⚙️ Pengaturan</a></li>
-              <li><a href="#">🔑 Ganti Password</a></li>
-              <li class="rdp-dropdown__divider"></li>
-              <li><a href="#" class="rdp-dropdown__item--danger">🚪 Keluar</a></li>
-            </ul>
-          </details>
+      <!-- Card 2 -->
+      <article class="rdp-card feature-card">
+        <div class="feature-card__icon">🎨</div>
+        <div class="rdp-card__body">
+          <h3 class="rdp-card__title">Great Styles with Just CSS</h3>
+          <p class="rdp-body-sm" style="color: var(--rdp-text-secondary);">
+            Tidak ada library Javascript yang membengkak. Seluruh styling utama ditenagai oleh CSS murni yang modern dan super cepat.
+          </p>
         </div>
+      </article>
 
-        <div class="rdp-card rdp-p-md">
-          <h4 class="rdp-label rdp-mb-sm">Tabs & Pagination</h4>
-          <nav class="rdp-tabs rdp-mb-md">
-            <a href="#" class="rdp-tabs__link active">Tab 1</a>
-            <a href="#" class="rdp-tabs__link">Tab 2</a>
-            <a href="#" class="rdp-tabs__link">Tab 3</a>
-          </nav>
-
-          <nav class="rdp-pagination" aria-label="Pagination">
-            <a href="#" class="rdp-pagination__btn" aria-label="Sebelumnya">«</a>
-            <a href="#" class="rdp-pagination__link">1</a>
-            <a href="#" class="rdp-pagination__link active">2</a>
-            <a href="#" class="rdp-pagination__link">3</a>
-            <a href="#" class="rdp-pagination__btn" aria-label="Berikutnya">»</a>
-          </nav>
+      <!-- Card 3 -->
+      <article class="rdp-card feature-card">
+        <div class="feature-card__icon">📱</div>
+        <div class="rdp-card__body">
+          <h3 class="rdp-card__title">Responsive Everything</h3>
+          <p class="rdp-body-sm" style="color: var(--rdp-text-secondary);">
+            Mendukung layout yang sepenuhnya responsif di semua resolusi, mulai dari ponsel pintar hingga layar lebar desktop ultra-wide.
+          </p>
         </div>
-      </div>
+      </article>
 
-      <!-- Modals & Toasts Triggers -->
-      <p class="demo-subtitle">Overlays & Notifications</p>
-      <div class="demo-row rdp-mb-lg">
-        <button class="rdp-btn rdp-btn--secondary" data-rdp-action="open-modal" data-rdp-target="#demo-modal">Buka Modal</button>
-        <button class="rdp-btn rdp-btn--outline" onclick="RDP.showToast({title: 'Sukses', message: 'Tindakan berhasil diselesaikan.', type: 'success'})">Toast Success</button>
-        <button class="rdp-btn rdp-btn--outline" onclick="RDP.showToast({title: 'Error', message: 'Gagal memuat resource server.', type: 'danger'})">Toast Danger</button>
-        <button class="rdp-btn rdp-btn--outline" onclick="RDP.showToast({title: 'Info', message: 'Informasi sistem terbaru tersedia.', type: 'info'})">Toast Info</button>
-        <button class="rdp-btn rdp-btn--outline" onclick="RDP.showToast({title: 'Data Dihapus', message: 'Berkas laporan bulanan telah dihapus.', type: 'warning', action: { text: 'Batalkan (Undo)', callback: () => RDP.showToast({title: 'Dipulihkan', message: 'Berkas berhasil dikembalikan.', type: 'success'}) }})">Toast with Action (Undo)</button>
-      </div>
-
-      <!-- Modal Dialog Markup -->
-      <dialog class="rdp-modal" id="demo-modal">
-        <div class="rdp-modal__content">
-          <header class="rdp-modal__header">
-            <h3 class="rdp-modal__title">Demo Modal Native</h3>
-            <button class="rdp-modal__close" data-rdp-action="close-modal">&times;</button>
-          </header>
-          <div class="rdp-modal__body">
-            <p>Ini adalah modal dialog native HTML5 yang didekorasi dengan gaya premium RDP. <br>Modal ini memiliki backdrop blur dan dapat ditutup dengan menekan tombol <strong>Esc</strong> pada keyboard Anda atau mengklik di luar area modal ini.</p>
-          </div>
-          <footer class="rdp-modal__footer">
-            <button class="rdp-btn" data-rdp-action="close-modal">Batal</button>
-            <button class="rdp-btn rdp-btn--primary" data-rdp-action="close-modal" onclick="RDP.showToast({title: 'Disimpan', message: 'Konfigurasi modal disimpan.', type: 'success'})">Simpan Perubahan</button>
-          </footer>
+      <!-- Card 4 -->
+      <article class="rdp-card feature-card">
+        <div class="feature-card__icon">🌗</div>
+        <div class="rdp-card__body">
+          <h3 class="rdp-card__title">Light or Dark Mode</h3>
+          <p class="rdp-body-sm" style="color: var(--rdp-text-secondary);">
+            Dukungan mode terang dan gelap bawaan secara otomatis mengikuti preferensi OS pengguna atau dapat dikontrol melalui JavaScript API.
+          </p>
         </div>
-      </dialog>
-    </section>
+      </article>
 
-    <!-- ═══════════════════════════════════════════════════════
-         UTILITIES PREVIEW
-         ═══════════════════════════════════════════════════════ -->
-    <section class="demo-section" id="utilities">
-      <h2 class="demo-title">🔧 Utilities Preview</h2>
+      <!-- Card 5 -->
+      <article class="rdp-card feature-card">
+        <div class="feature-card__icon">🛠️</div>
+        <div class="rdp-card__body">
+          <h3 class="rdp-card__title">Easy Customization</h3>
+          <p class="rdp-body-sm" style="color: var(--rdp-text-secondary);">
+            Sesuaikan dengan mudah menggunakan lebih dari 120 variabel CSS kustom untuk mengubah warna, spacing, radius, dan bayangan.
+          </p>
+        </div>
+      </article>
 
-      <p class="demo-subtitle">Spacing & Background</p>
-      <div class="demo-row">
-        <div class="rdp-bg-primary rdp-p-md rdp-rounded-md">Primary</div>
-        <div class="rdp-bg-secondary rdp-p-md rdp-rounded-md">Secondary</div>
-        <div class="rdp-bg-accent rdp-p-md rdp-rounded-md">Accent</div>
-        <div class="rdp-bg-cream rdp-p-md rdp-rounded-md rdp-border">Cream</div>
+      <!-- Card 6 -->
+      <article class="rdp-card feature-card">
+        <div class="feature-card__icon">⚡</div>
+        <div class="rdp-card__body">
+          <h3 class="rdp-card__title">Optimized Performance</h3>
+          <p class="rdp-body-sm" style="color: var(--rdp-text-secondary);">
+            Kecepatan muat maksimal, ramah terhadap SEO, dan siap digunakan bersama HTMX untuk interaksi dinamis tanpa reload halaman.
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section class="comparison-section rdp-container">
+    <h2 class="rdp-display rdp-text-center" style="margin-bottom: var(--rdp-space-xl);">Embrace the Power of Less</h2>
+    <div class="comparison-grid">
+      
+      <!-- Pico / RDP CSS -->
+      <div class="comparison-card" style="border-top: 4px solid var(--rdp-success);">
+        <h3 class="rdp-card__title" style="color: var(--rdp-success);">🟢 RDP-UI (Clean Semantic)</h3>
+        <p class="rdp-body-sm" style="color: var(--rdp-text-secondary); margin-bottom: var(--rdp-space-md);">
+          HTML yang bersih, mudah dirawat, dan ramah pembaca layar (screen readers).
+        </p>
+        <pre><code>&lt;form&gt;
+  &lt;label for="email"&gt;Email&lt;/label&gt;
+  &lt;input type="email" id="email" required&gt;
+  &lt;button type="submit"&gt;Kirim&lt;/button&gt;
+&lt;/form&gt;</code></pre>
       </div>
 
-      <p class="demo-subtitle">Shadows</p>
-      <div class="demo-row" style="gap: var(--rdp-space-lg);">
-        <div class="rdp-shadow-xs rdp-bg-surface rdp-p-md rdp-rounded-md">XS</div>
-        <div class="rdp-shadow-sm rdp-bg-surface rdp-p-md rdp-rounded-md">SM</div>
-        <div class="rdp-shadow-md rdp-bg-surface rdp-p-md rdp-rounded-md">MD</div>
-        <div class="rdp-shadow-lg rdp-bg-surface rdp-p-md rdp-rounded-md">LG</div>
-        <div class="rdp-shadow-xl rdp-bg-surface rdp-p-md rdp-rounded-md">XL</div>
+      <!-- Utility-First CSS -->
+      <div class="comparison-card" style="border-top: 4px solid var(--rdp-danger);">
+        <h3 class="rdp-card__title" style="color: var(--rdp-danger);">🔴 Utility-First CSS</h3>
+        <p class="rdp-body-sm" style="color: var(--rdp-text-secondary); margin-bottom: var(--rdp-space-md);">
+          Ratusan class utility yang membingungkan dan sulit dikelola di masa mendatang.
+        </p>
+        <pre><code>&lt;form class="flex flex-col gap-4 p-6 bg-white rounded-lg shadow"&gt;
+  &lt;label class="block text-sm font-bold text-gray-700"&gt;Email&lt;/label&gt;
+  &lt;input type="email" class="w-full px-3 py-2 border rounded shadow-sm focus:outline-none" required&gt;
+  &lt;button class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"&gt;Kirim&lt;/button&gt;
+&lt;/form&gt;</code></pre>
       </div>
 
-      <p class="demo-subtitle">Responsive Grid</p>
-      <div class="rdp-grid rdp-grid-responsive">
-        <div class="rdp-bg-muted rdp-p-md rdp-rounded-md rdp-text-center">Col 1</div>
-        <div class="rdp-bg-muted rdp-p-md rdp-rounded-md rdp-text-center">Col 2</div>
-        <div class="rdp-bg-muted rdp-p-md rdp-rounded-md rdp-text-center">Col 3</div>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ═══════════════════════════════════════════════════════
-         NAVIGATION LINKS
-         ═══════════════════════════════════════════════════════ -->
-    <section class="demo-section" id="examples-nav">
-      <h2 class="demo-title">📚 Example Pages</h2>
-      <div class="rdp-grid rdp-grid-responsive">
-        <a href="examples/layouts-blank.html" class="rdp-card rdp-card--clickable">
-          <div class="rdp-card__body rdp-text-center">
-            <h3 class="rdp-card__title">Blank Layout</h3>
-            <p class="rdp-caption">Login, Register, Error Pages</p>
-          </div>
-        </a>
-        <a href="examples/layouts-homepage.html" class="rdp-card rdp-card--clickable" style="text-decoration: none;">
-          <div class="rdp-card__body rdp-text-center">
-            <h3 class="rdp-card__title">Homepage Layout</h3>
-            <p class="rdp-caption">Landing Page, Marketing Site</p>
-          </div>
-        </a>
-        <a href="examples/layouts-dashboard.html" class="rdp-card rdp-card--clickable" style="text-decoration: none;">
-          <div class="rdp-card__body rdp-text-center">
-            <h3 class="rdp-card__title">Dashboard Layout</h3>
-            <p class="rdp-caption">SaaS, CRM, Admin Panel</p>
-          </div>
-        </a>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ═══════════════════════════════════════════════════════
-       FOOTER
-       ═══════════════════════════════════════════════════════ -->
-  <footer class="rdp-container" style="text-align: center; padding: var(--rdp-space-xl) 0; color: var(--rdp-text-muted); font-size: var(--rdp-size-caption);">
-    <p>RDP-UI v1.0.0 — © 2026 Radian Data Platform</p>
-    <p>Radian Data Platform · <a href="https://radian.web.id">radian.web.id</a></p>
+  <!-- Footer -->
+  <footer style="background: var(--rdp-bg-secondary); border-top: 1px solid var(--rdp-border); padding: var(--rdp-space-lg) 0; margin-top: auto; text-align: center; font-size: var(--rdp-size-caption); color: var(--rdp-text-muted);">
+    <div class="rdp-container">
+      <p>RDP-UI v1.0.0 — © 2026 Radian Data Platform</p>
+      <p><a href="https://radian.web.id" style="color: var(--rdp-text-secondary);">radian.web.id</a></p>
+    </div>
   </footer>
 
-  <!-- ═══════════════════════════════════════════════════════
-       THEME SWITCHER (floating)
-       ═══════════════════════════════════════════════════════ -->
-  <div class="theme-switcher">
-    <button data-rdp-action="set-theme" data-rdp-theme="light" id="theme-light">☀️</button>
-    <button data-rdp-action="set-theme" data-rdp-theme="dark" id="theme-dark">🌙</button>
-    <button data-rdp-action="set-theme" data-rdp-theme="auto" id="theme-auto">🖥️</button>
-  </div>
-
-  <script type="module">
-    // Highlight active theme button
-    function updateThemeButtons() {
-      const current = RDP.getTheme();
-      document.querySelectorAll('.theme-switcher button').forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-rdp-theme') === current);
-      });
-    }
-    document.addEventListener('rdp:theme-change', updateThemeButtons);
-    updateThemeButtons();
+  <script>
+    // Global Nav styling change on scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('global-nav');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
   </script>
 </body>
 </html>

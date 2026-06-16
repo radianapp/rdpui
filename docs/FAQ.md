@@ -53,3 +53,9 @@ rollupOptions: {
 ```
 Vite kemudian akan memproses dan menyalin berkas-berkas tersebut ke `dist/examples/` beserta penyesuaian path asetnya secara otomatis.
 
+---
+
+### Q6: Mengapa warna teks tombol RDP-UI pada kondisi hover berubah warna (misal menjadi hijau/teal) saat diintegrasikan dengan PicoCSS?
+**A:** Ini terjadi karena spesifisitas selektor `a:hover` dari framework luar seperti PicoCSS bersaing dengan selektor hover `.rdp-btn--primary:hover` milik RDP-UI. Di versi RDP-UI terdahulu, aturan hover tidak mendefinisikan warna teks (`color`) secara eksplisit.
+
+Masalah ini telah diperbaiki dengan menetapkan `color: var(--rdp-text-inverse);` secara eksplisit pada seluruh variant hover tombol (`primary`, `secondary`, `accent`, dan `danger`) agar warna teks tetap kontras dan tidak terpengaruh oleh stylesheet global luar. Pastikan Anda memperbarui ke versi `rdp.css` terbaru.

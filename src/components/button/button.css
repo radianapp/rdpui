@@ -95,6 +95,7 @@
 .rdp-btn--primary:hover {
   background-color: var(--rdp-primary-800);
   border-color: var(--rdp-primary-800);
+  color: var(--rdp-text-inverse);
 }
 
 
@@ -109,6 +110,7 @@
 .rdp-btn--secondary:hover {
   background-color: var(--rdp-secondary-800);
   border-color: var(--rdp-secondary-800);
+  color: var(--rdp-text-inverse);
 }
 
 
@@ -123,6 +125,7 @@
 .rdp-btn--accent:hover {
   background-color: var(--rdp-accent-800);
   border-color: var(--rdp-accent-800);
+  color: var(--rdp-text-inverse);
 }
 
 
@@ -137,6 +140,7 @@
 .rdp-btn--danger:hover {
   background-color: var(--rdp-danger-700);
   border-color: var(--rdp-danger-700);
+  color: var(--rdp-text-inverse);
 }
 
 

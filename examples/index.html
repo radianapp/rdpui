@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Galeri Contoh Layout RDP-UI — Jelajahi template layouts siap pakai untuk kebutuhan aplikasi Anda.">
+  <title>Examples — RDP-UI</title>
+
+  <!-- PicoCSS 2.1.1 (CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.min.css">
+
+  <!-- RDP-UI -->
+  <link rel="stylesheet" href="/src/rdp.css">
+  <script type="module" src="/src/rdp.js" defer></script>
+
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .examples-nav {
+      background: var(--rdp-surface);
+      border-bottom: 1px solid var(--rdp-border);
+      box-shadow: var(--rdp-shadow-xs);
+    }
+
+    .examples-hero {
+      text-align: center;
+      padding: var(--rdp-space-2xl) 0 var(--rdp-space-xl);
+    }
+
+    .examples-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--rdp-space-lg);
+      margin-bottom: var(--rdp-space-2xl);
+    }
+
+    .example-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: transform var(--rdp-transition), box-shadow var(--rdp-transition);
+    }
+
+    .example-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--rdp-shadow-lg);
+    }
+
+    .example-card__badge-row {
+      display: flex;
+      gap: var(--rdp-space-xs);
+      margin-bottom: var(--rdp-space-xs);
+    }
+
+    .theme-switcher {
+      display: flex;
+      gap: var(--rdp-space-2xs);
+      background: var(--rdp-bg-secondary);
+      padding: var(--rdp-space-2xs);
+      border-radius: var(--rdp-radius-pill);
+      border: 1px solid var(--rdp-border);
+    }
+
+    .theme-switcher button {
+      padding: var(--rdp-space-2xs) var(--rdp-space-xs);
+      border: none;
+      background: transparent;
+      border-radius: var(--rdp-radius-pill);
+      font-size: var(--rdp-size-caption);
+      cursor: pointer;
+      color: var(--rdp-text-secondary);
+      transition: all var(--rdp-transition);
+    }
+
+    .theme-switcher button.active,
+    .theme-switcher button:hover {
+      background: var(--rdp-primary);
+      color: var(--rdp-text-inverse);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigasi Dokumen -->
+  <nav class="examples-nav rdp-p-sm">
+    <div class="rdp-container-fluid" style="display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100% !important; gap: var(--rdp-space-md);">
+      <!-- Kiri: Logo & Nama -->
+      <a href="/" style="display: flex !important; align-items: center !important; gap: var(--rdp-space-xs) !important; text-decoration: none; color: inherit;">
+        <img src="/static/logo-rdp-color.png" alt="RDP Logo" style="height: 1.25rem; width: auto; display: block; margin: 0;">
+        <strong style="font-family: var(--rdp-serif); font-size: 1.25rem; line-height: 1.25rem; white-space: nowrap; display: inline-flex; align-items: center;">UI</strong>
+      </a>
+      <!-- Tengah: Menu Utama -->
+      <div style="display: flex !important; align-items: center !important; gap: var(--rdp-space-xs) !important; flex-grow: 1 !important; justify-content: center !important;">
+        <a href="/" class="rdp-btn rdp-btn--ghost rdp-btn--sm" style="margin-bottom: 0;">Beranda</a>
+        <a href="/examples/" class="rdp-btn rdp-btn--primary rdp-btn--sm" style="margin-bottom: 0;">Examples</a>
+        <a href="/docs/" class="rdp-btn rdp-btn--ghost rdp-btn--sm" style="margin-bottom: 0;">Docs</a>
+      </div>
+      <!-- Kanan: Switcher -->
+      <div style="display: flex !important; align-items: center !important;">
+        <div class="theme-switcher">
+          <button data-rdp-action="set-theme" data-rdp-theme="light" id="theme-light">☀️</button>
+          <button data-rdp-action="set-theme" data-rdp-theme="dark" id="theme-dark">🌙</button>
+          <button data-rdp-action="set-theme" data-rdp-theme="auto" id="theme-auto">🖥️</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="examples-hero rdp-container">
+    <p class="rdp-overline" style="color: var(--rdp-secondary);">Ready-to-use Templates</p>
+    <h1 class="rdp-display">Examples</h1>
+    <p class="rdp-body-lg" style="color: var(--rdp-text-secondary); max-width: 600px; margin-inline: auto;">
+      Layout boilerplate minimalis dan premium untuk menjelajahi kehebatan sistem desain RDP-UI secara langsung.
+    </p>
+  </header>
+
+  <!-- Main Content Grid -->
+  <main class="rdp-container">
+    <div class="examples-grid">
+      
+      <!-- Blank Layout Card -->
+      <article class="rdp-card example-card">
+        <div class="rdp-card__body">
+          <div class="example-card__badge-row">
+            <span class="rdp-badge rdp-badge--primary">HTML</span>
+            <span class="rdp-badge rdp-badge--secondary">Pure CSS</span>
+          </div>
+          <h3 class="rdp-card__title">Blank Layout</h3>
+          <p class="rdp-body-sm" style="color: var(--rdp-text-secondary);">
+            Halaman bersih tanpa navigasi global. Sangat cocok untuk halaman Login, Registrasi, Lupa Password, Halaman Error (404/500), atau Pemeliharaan.
+          </p>
+          <ul style="font-size: var(--rdp-size-caption); color: var(--rdp-text-muted); margin-bottom: var(--rdp-space-md);">
+            <li>Backdrop terpusat</li>
+            <li>Struktur form terisolasi</li>
+            <li>Ringan & Mobile-first</li>
+          </ul>
+        </div>
+        <footer class="rdp-card__footer rdp-flex" style="gap: var(--rdp-space-sm); border-top: 1px solid var(--rdp-border); padding-top: var(--rdp-space-sm);">
+          <a href="/examples/layouts-blank.html" class="rdp-btn rdp-btn--primary rdp-btn--sm rdp-flex-fill rdp-text-center" style="text-decoration: none;">👁️ Preview</a>
+          <a href="https://github.com/radianapp/rdpui/blob/main/examples/layouts-blank.html" target="_blank" class="rdp-btn rdp-btn--outline rdp-btn--sm rdp-flex-fill rdp-text-center" style="text-decoration: none;">💻 View Source</a>
+        </footer>
+      </article>
+
+      <!-- Homepage Layout Card -->
+      <article class="rdp-card example-card">
+        <div class="rdp-card__body">
+          <div class="example-card__badge-row">
+            <span class="rdp-badge rdp-badge--primary">HTML</span>
+            <span class="rdp-badge rdp-badge--accent">Marketing</span>
+          </div>
+          <h3 class="rdp-card__title">Homepage Layout</h3>
+          <p class="rdp-body-sm" style="color: var(--rdp-text-secondary);">
+            Tata letak situs pemasaran (marketing landing page) dengan hero besar, grid fitur, testimonial, FAQ, dan footer korporat yang responsif.
+          </p>
+          <ul style="font-size: var(--rdp-size-caption); color: var(--rdp-text-muted); margin-bottom: var(--rdp-space-md);">
+            <li>Hero Section interaktif</li>
+            <li>Komponen testimonial & FAQ accordion</li>
+            <li>Header nav lengket (sticky)</li>
+          </ul>
+        </div>
+        <footer class="rdp-card__footer rdp-flex" style="gap: var(--rdp-space-sm); border-top: 1px solid var(--rdp-border); padding-top: var(--rdp-space-sm);">
+          <a href="/examples/layouts-homepage.html" class="rdp-btn rdp-btn--primary rdp-btn--sm rdp-flex-fill rdp-text-center" style="text-decoration: none;">👁️ Preview</a>
+          <a href="https://github.com/radianapp/rdpui/blob/main/examples/layouts-homepage.html" target="_blank" class="rdp-btn rdp-btn--outline rdp-btn--sm rdp-flex-fill rdp-text-center" style="text-decoration: none;">💻 View Source</a>
+        </footer>
+      </article>
+
+      <!-- Dashboard Layout Card -->
+      <article class="rdp-card example-card">
+        <div class="rdp-card__body">
+          <div class="example-card__badge-row">
+            <span class="rdp-badge rdp-badge--primary">HTML</span>
+            <span class="rdp-badge rdp-badge--secondary">HTMX Ready</span>
+            <span class="rdp-badge rdp-badge--solid-success">Popular</span>
+          </div>
+          <h3 class="rdp-card__title">Dashboard Layout</h3>
+          <p class="rdp-body-sm" style="color: var(--rdp-text-secondary);">
+            App Shell modern dua kolom dengan Sidebar navigasi kiri tetap (sticky), Topbar pencarian + profil, KPI Cards, diagram, dan tabel responsif.
+          </p>
+          <ul style="font-size: var(--rdp-size-caption); color: var(--rdp-text-muted); margin-bottom: var(--rdp-space-md);">
+            <li>Sidebar menu interaktif</li>
+            <li>Tabel data dengan status badge</li>
+            <li>Grid metrik statistik otomatis</li>
+          </ul>
+        </div>
+        <footer class="rdp-card__footer rdp-flex" style="gap: var(--rdp-space-sm); border-top: 1px solid var(--rdp-border); padding-top: var(--rdp-space-sm);">
+          <a href="/examples/layouts-dashboard.html" class="rdp-btn rdp-btn--primary rdp-btn--sm rdp-flex-fill rdp-text-center" style="text-decoration: none;">👁️ Preview</a>
+          <a href="https://github.com/radianapp/rdpui/blob/main/examples/layouts-dashboard.html" target="_blank" class="rdp-btn rdp-btn--outline rdp-btn--sm rdp-flex-fill rdp-text-center" style="text-decoration: none;">💻 View Source</a>
+        </footer>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: var(--rdp-bg-secondary); border-top: 1px solid var(--rdp-border); padding: var(--rdp-space-lg) 0; margin-top: auto; text-align: center; font-size: var(--rdp-size-caption); color: var(--rdp-text-muted);">
+    <div class="rdp-container">
+      <p>RDP-UI v1.0.0 — © 2026 Radian Data Platform</p>
+      <p><a href="https://radian.web.id" style="color: var(--rdp-text-secondary);">radian.web.id</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

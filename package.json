@@ -1,8 +1,8 @@
 {
-  "name": "@radian/rdp-ui",
+  "name": "@radiandp/rdp-ui",
   "version": "1.0.1",
   "description": "RDP-UI — Design System & UI Framework untuk ekosistem Radian",
-  "author": "Radian Data Platform <dev@radian.web.id>",
+  "author": "Radian Data Platform <heyradian@gmail.com>",
   "license": "MIT",
   "homepage": "https://cdn.radian.web.id",
   "repository": {
@@ -11,7 +11,7 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "vite --port 3001",
+    "dev": "vite --port 3000",
     "build": "vite build",
     "preview": "vite preview"
   },
