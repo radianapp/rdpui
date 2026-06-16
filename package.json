@@ -1,6 +1,6 @@
 {
   "name": "@radian/rdp-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "RDP-UI — Design System & UI Framework untuk ekosistem Radian",
   "author": "Radian Data Platform <dev@radian.web.id>",
   "license": "MIT",
@@ -17,5 +17,8 @@
   },
   "devDependencies": {
     "vite": "^6.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
