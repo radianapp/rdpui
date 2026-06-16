@@ -40,11 +40,16 @@ jobs:
 
       - name: 📋 Tampilkan ukuran output
         run: |
+          echo "=== Daftar file di dist/ ==="
+          find dist -type f | sort
+          echo ""
           echo "=== Ukuran dist/assets ==="
-          du -sh dist/assets/rdp.css dist/assets/rdp.js
+          du -sh dist/assets/*
+          echo ""
           echo "=== Ukuran gzip ==="
-          gzip -c dist/assets/rdp.css | wc -c | awk '{printf "rdp.css gzip: %.2f kB\n", $1/1024}'
-          gzip -c dist/assets/rdp.js  | wc -c | awk '{printf "rdp.js  gzip: %.2f kB\n", $1/1024}'
+          for f in dist/assets/*.css dist/assets/*.js; do
+            [ -f "$f" ] && gzip -c "$f" | wc -c | awk -v name="$(basename $f)" '{printf "%s gzip: %.2f kB\n", name, $1/1024}'
+          done
 
       - name: 📤 Upload artifact Pages
         uses: actions/upload-pages-artifact@v3
