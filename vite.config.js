@@ -28,7 +28,7 @@ export default defineConfig({
 
     rollupOptions: {
       input: {
-        rdp: resolve(__dirname, 'index.html'),
+        index: resolve(__dirname, 'index.html'),
         'examples/index': resolve(__dirname, 'examples/index.html'),
         'docs/index': resolve(__dirname, 'docs/index.html'),
         'examples/layouts-blank': resolve(__dirname, 'examples/layouts-blank.html'),
@@ -64,7 +64,12 @@ export default defineConfig({
           return 'assets/[name]-[hash].js';
         },
 
-        chunkFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: (chunkInfo) => {
+          if (chunkInfo.name === 'rdp') {
+            return 'assets/rdp.js';
+          }
+          return 'assets/[name]-[hash].js';
+        },
       },
     },
 

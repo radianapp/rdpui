@@ -59,3 +59,11 @@ Vite kemudian akan memproses dan menyalin berkas-berkas tersebut ke `dist/exampl
 **A:** Ini terjadi karena spesifisitas selektor `a:hover` dari framework luar seperti PicoCSS bersaing dengan selektor hover `.rdp-btn--primary:hover` milik RDP-UI. Di versi RDP-UI terdahulu, aturan hover tidak mendefinisikan warna teks (`color`) secara eksplisit.
 
 Masalah ini telah diperbaiki dengan menetapkan `color: var(--rdp-text-inverse);` secara eksplisit pada seluruh variant hover tombol (`primary`, `secondary`, `accent`, dan `danger`) agar warna teks tetap kontras dan tidak terpengaruh oleh stylesheet global luar. Pastikan Anda memperbarui ke versi `rdp.css` terbaru.
+
+---
+
+### Q7: Mengapa berkas `rdp.js` terkadang tidak ditemukan (404 Not Found) di URL CDN setelah melakukan build?
+**A:** Ini disebabkan karena nama entry point HTML (`rdp` untuk `index.html`) di `rollupOptions.input` bertabrakan dengan nama chunk JS (`rdp` untuk `src/rdp.js`). Akibatnya, Rollup secara otomatis menambahkan hash ke file JS (menjadi `rdp-[hash].js`) atau menduplikasinya sebagai `rdp2.js` untuk menghindari tabrakan nama file. 
+
+Masalah ini diselesaikan dengan mengubah key entry point HTML di `vite.config.js` dari `rdp` menjadi `index`, serta menambahkan rule penamaan pada `chunkFileNames` agar chunk berukuran kecil dengan nama `rdp` selalu disimpan sebagai `assets/rdp.js` tanpa hash. Pastikan Anda melakukan build ulang dengan `npm run build` dan melakukan deploy ulang.
+
